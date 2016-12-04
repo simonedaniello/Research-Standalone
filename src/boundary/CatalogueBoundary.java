@@ -25,15 +25,9 @@ public class CatalogueBoundary implements Runnable{
 
     //Singleton
     private static CatalogueBoundary instance = new CatalogueBoundary();
-    private  JPanel panel1;
-    private  JTextField ResearchTF;
-    private  JButton ConfResB;
-    private  JList list1;
-    private  JButton ElectronicsB;
-    private  JButton ClothingB;
-    private  JButton BookB;
     private  JFrame boundaryCatalogo;
-
+    private JTextField ResearchTF;
+    private JList list1;
 
     private  JTextField titoloTF;
     private  JTextField venditoreTF;
@@ -46,20 +40,73 @@ public class CatalogueBoundary implements Runnable{
     private  JTextField tagliaTF;
 
 
-    private  JPanel pan = new JPanel();
+    private  JPanel pan = new JPanel(new GridBagLayout());
     private  JDialog jd = new JDialog();
 
     private int kind;
     //private Thread thread;
 
     private CatalogueBoundary(){
-
+        ResearchTF = new JTextField(20);
+        JButton confResB = new JButton("OK");
+        list1 = new JList();
+        JButton electronicsB = new JButton("Informatica");
+        JButton clothingB = new JButton("Abbigliamento");
+        JButton bookB = new JButton("libri");
         boundaryCatalogo = new JFrame();
-        boundaryCatalogo.setContentPane(panel1);
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        JPanel mainJpanel = new JPanel();
+
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.FIRST_LINE_START;
+        gbc.insets = new Insets(10, 0, 0, 10);
+        mainJpanel.add(new JLabel("Ricerca"), gbc);
+
+
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.PAGE_START;
+        gbc.insets = new Insets(10, 0, 0, 10);
+        mainJpanel.add(ResearchTF, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.FIRST_LINE_END;
+        gbc.insets = new Insets(10, 0, 0, 10);
+        mainJpanel.add(confResB, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.anchor = GridBagConstraints.FIRST_LINE_START;
+        gbc.insets = new Insets(10, 0, 0, 10);
+        mainJpanel.add(electronicsB, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.anchor = GridBagConstraints.LINE_START;
+        gbc.insets = new Insets(10, 0, 0, 10);
+        mainJpanel.add(clothingB, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.anchor = GridBagConstraints.LAST_LINE_START;
+        gbc.insets = new Insets(10, 0, 0, 10);
+        mainJpanel.add(bookB, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.anchor = GridBagConstraints.LINE_END;
+        gbc.insets = new Insets(10, 0, 0, 10);
+        mainJpanel.add(list1, gbc);
+
+        boundaryCatalogo.add(mainJpanel);
         boundaryCatalogo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        boundaryCatalogo.pack();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         boundaryCatalogo.setLocation(dim.width/2-boundaryCatalogo.getSize().width/2, dim.height/2-boundaryCatalogo.getSize().height/2);
+        boundaryCatalogo.setSize(dim.width / 8, dim.height / 8);
+        boundaryCatalogo.pack();
         boundaryCatalogo.setVisible(true);
 
 
@@ -68,10 +115,10 @@ public class CatalogueBoundary implements Runnable{
         Actions electronicsAction = new Actions(2);
         Actions clothingAction = new Actions(3);
 
-        ConfResB.addActionListener(researchAction);
-        BookB.addActionListener(BookAction);
-        ElectronicsB.addActionListener(electronicsAction);
-        ClothingB.addActionListener(clothingAction);
+        confResB.addActionListener(researchAction);
+        bookB.addActionListener(BookAction);
+        electronicsB.addActionListener(electronicsAction);
+        clothingB.addActionListener(clothingAction);
 
     }
 
