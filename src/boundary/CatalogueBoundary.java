@@ -44,7 +44,6 @@ public class CatalogueBoundary implements Runnable{
     private  JDialog jd = new JDialog();
 
     private int kind;
-    //private Thread thread;
 
     private CatalogueBoundary(){
         ResearchTF = new JTextField(20);
@@ -110,6 +109,36 @@ public class CatalogueBoundary implements Runnable{
         gbc2.insets = new Insets(10, 10, 10, 10);
         secondatyJpanel.add(bookB, gbc2);
 
+        JSlider framesPerSecond = new JSlider(JSlider.HORIZONTAL,
+                0, 1000, 500);
+        framesPerSecond.setMajorTickSpacing(250);
+        framesPerSecond.setMinorTickSpacing(50);
+        framesPerSecond.setPaintTicks(true);
+        framesPerSecond.setPaintLabels(true);
+
+        JCheckBox cb = new JCheckBox("Attivazione prezzo");
+        cb.addItemListener(ie -> {
+            if (cb.isSelected()) {
+                framesPerSecond.setVisible(true);
+                System.out.println("enabled.");
+            } else {
+                framesPerSecond.setVisible(false);
+                System.out.println("disabled.");
+            }
+        });
+        gbc2.gridx = 0;
+        gbc2.gridy = 3;
+        gbc2.anchor = GridBagConstraints.FIRST_LINE_START;
+        gbc2.insets = new Insets(10, 10, 10, 10);
+        secondatyJpanel.add(new JCheckBox("Attivazione prezzo"), gbc2);
+
+        gbc2.gridx = 0;
+        gbc2.gridy = 4;
+        gbc2.anchor = GridBagConstraints.FIRST_LINE_START;
+        gbc2.insets = new Insets(10, 10, 10, 10);
+        secondatyJpanel.add(framesPerSecond, gbc2);
+
+        //---------------------
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.anchor = GridBagConstraints.FIRST_LINE_START;
@@ -215,9 +244,7 @@ public class CatalogueBoundary implements Runnable{
         research(this.kind);
     }
 
-
-    private class Actions implements ActionListener
-    {
+    private class Actions implements ActionListener {
         int azione;
         private GridBagConstraints gbc;
         private JButton okButton = new JButton("OK");
@@ -541,4 +568,6 @@ public class CatalogueBoundary implements Runnable{
             }
         }
     }
+
+
 }
