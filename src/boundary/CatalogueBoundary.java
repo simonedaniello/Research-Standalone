@@ -53,52 +53,84 @@ public class CatalogueBoundary implements Runnable{
         JButton electronicsB = new JButton("Informatica");
         JButton clothingB = new JButton("Abbigliamento");
         JButton bookB = new JButton("libri");
+
         boundaryCatalogo = new JFrame();
-
         GridBagConstraints gbc = new GridBagConstraints();
-        JPanel mainJpanel = new JPanel();
+        GridBagConstraints gbc2 = new GridBagConstraints();
+        JPanel mainJpanel = new JPanel(new GridBagLayout());
+        JPanel secondatyJpanel = new JPanel(new GridBagLayout());
 
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.anchor = GridBagConstraints.FIRST_LINE_START;
-        gbc.insets = new Insets(10, 0, 0, 10);
-        mainJpanel.add(new JLabel("Ricerca"), gbc);
-
+        JSeparator sep = new JSeparator(JSeparator.HORIZONTAL);
+        sep.setPreferredSize(new Dimension(20,1));
 
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.PAGE_START;
-        gbc.insets = new Insets(10, 0, 0, 10);
-        mainJpanel.add(ResearchTF, gbc);
+        gbc.insets = new Insets(10, 10, 10, 10);
+        mainJpanel.add(new JLabel("Ricerca"), gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.anchor = GridBagConstraints.FIRST_LINE_END;
-        gbc.insets = new Insets(10, 0, 0, 10);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.weighty = 1;
+        gbc.anchor = GridBagConstraints.PAGE_END;
+        gbc.insets = new Insets(10, 10, 10, 10);
+        mainJpanel.add(sep, gbc);
+
+
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.FIRST_LINE_START;
+        gbc.insets = new Insets(10, 10, 10, 10);
+        mainJpanel.add(ResearchTF, gbc);
+
+        gbc.gridx = 2;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.FIRST_LINE_START;
+        gbc.insets = new Insets(10, 10, 10, 10);
         mainJpanel.add(confResB, gbc);
+
+        //---------------------
+
+        gbc2.gridx = 0;
+        gbc2.gridy = 0;
+        gbc2.anchor = GridBagConstraints.FIRST_LINE_START;
+        gbc2.insets = new Insets(10, 10, 10, 10);
+        secondatyJpanel.add(electronicsB, gbc2);
+
+        gbc2.gridx = 0;
+        gbc2.gridy = 1;
+        gbc2.anchor = GridBagConstraints.FIRST_LINE_START;
+        gbc2.insets = new Insets(10, 10, 10, 10);
+        secondatyJpanel.add(clothingB, gbc2);
+
+        gbc2.gridx = 0;
+        gbc2.gridy = 2;
+        gbc2.anchor = GridBagConstraints.FIRST_LINE_START;
+        gbc2.insets = new Insets(10, 10, 10, 10);
+        secondatyJpanel.add(bookB, gbc2);
 
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.anchor = GridBagConstraints.FIRST_LINE_START;
-        gbc.insets = new Insets(10, 0, 0, 10);
-        mainJpanel.add(electronicsB, gbc);
+        gbc.insets = new Insets(10, 10, 10, 10);
+        mainJpanel.add(secondatyJpanel, gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        gbc.anchor = GridBagConstraints.LINE_START;
-        gbc.insets = new Insets(10, 0, 0, 10);
-        mainJpanel.add(clothingB, gbc);
+        JSeparator sep2 = new JSeparator(JSeparator.VERTICAL);
+        sep2.setPreferredSize(new Dimension(20,1));
 
-        gbc.gridx = 0;
+        gbc.fill = GridBagConstraints.VERTICAL;
+        gbc.weighty = 1;
+        gbc.gridx = 1;
         gbc.gridy = 1;
-        gbc.anchor = GridBagConstraints.LAST_LINE_START;
-        gbc.insets = new Insets(10, 0, 0, 10);
-        mainJpanel.add(bookB, gbc);
+        gbc.anchor = GridBagConstraints.FIRST_LINE_START;
+        gbc.insets = new Insets(10, 10, 10, 10);
+        mainJpanel.add(sep2, gbc);
 
-        gbc.gridx = 0;
+        gbc.gridx = 1;
         gbc.gridy = 1;
-        gbc.anchor = GridBagConstraints.LINE_END;
-        gbc.insets = new Insets(10, 0, 0, 10);
+        gbc.anchor = GridBagConstraints.PAGE_START;
+        gbc.insets = new Insets(10, 10, 10, 10);
         mainJpanel.add(list1, gbc);
 
         boundaryCatalogo.add(mainJpanel);
