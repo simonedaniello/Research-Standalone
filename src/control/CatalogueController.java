@@ -35,6 +35,7 @@ public class CatalogueController {
 
         Article rq = null;
 
+        System.out.println(prezzo);
         switch (tipoArticolo) {
             case "Book":
                 rq = ArticleFactory.getInstance().getBook();
@@ -132,6 +133,12 @@ public class CatalogueController {
                 }
                 sql = sql + "CASA ='" + ((Book) rq).getEditore().replace("'", "'' ") + "' ";
             }
+            if(rq.getPrezzo() != 0){
+                if (isItTheFirst != 0) {
+                    sql = sql + "AND ";
+                }
+                sql = sql + "PREZZO <'" + rq.getPrezzo() + "' ";
+            }
             /*if (((Book) rq).getPagine() != 0) {
                 if (isItTheFirst != 0) {
                     sql = sql + "AND ";
@@ -169,6 +176,12 @@ public class CatalogueController {
                 }
                 sql = sql + "MARCA ='" + ((Clothing) rq).getMarca().replace("'", "'' ") + "' ";
             }
+            if(rq.getPrezzo() != 0){
+                if (isItTheFirst != 0) {
+                    sql = sql + "AND ";
+                }
+                sql = sql + "PREZZO < '" + rq.getPrezzo() + "' ";
+            }
 
         } else if (rq.getClass().equals(Electronics.class)) {
             sql = "SELECT * FROM ARTICLES.informatica WHERE ";
@@ -201,6 +214,12 @@ public class CatalogueController {
                 }
                 sql = sql + "MARCA ='" + ((Electronics) rq).getMarca().replace("'", "'' ") + "' ";
             }
+            if(rq.getPrezzo() != 0){
+                if (isItTheFirst != 0) {
+                    sql = sql + "AND ";
+                }
+                sql = sql + "PREZZO < '" + rq.getPrezzo() + "' ";
+            }
 
         } else if (rq.getClass().equals(TextBook.class)) {
             sql = "SELECT * FROM ARTICLES.Scolastico WHERE ";
@@ -226,10 +245,18 @@ public class CatalogueController {
                 }
                 sql = sql + "EDIZIONE ='" + ((TextBook) rq).getEdizione() + "' ";
             }
+            if(rq.getPrezzo() != 0){
+                if (isItTheFirst != 0) {
+                    sql = sql + "AND ";
+                }
+                sql = sql + "PREZZO < '" + rq.getPrezzo() + "' ";
+            }
 
         } else if (rq.getClass().equals(Article.class)) {
             sql = "SELECT * FROM ARTICLES.articolo WHERE NOME = '" + rq.getNome().replace("'", "'' ") + "' ";
-
+            if(rq.getPrezzo() != 0){
+                sql = sql + "AND PREZZO < '" + rq.getPrezzo() + "' ";
+            }
         }
 
         System.out.println(sql);

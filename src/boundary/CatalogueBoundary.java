@@ -38,7 +38,8 @@ public class CatalogueBoundary implements Runnable{
     private  JTextField marcaTF;
     private  JTextField modelloTF;
     private  JTextField tagliaTF;
-
+    private JCheckBox cb;
+    private JSlider framesPerSecond;
 
     private  JPanel pan = new JPanel(new GridBagLayout());
     private  JDialog jd = new JDialog();
@@ -53,7 +54,7 @@ public class CatalogueBoundary implements Runnable{
         JButton clothingB = new JButton("Abbigliamento");
         JButton bookB = new JButton("libri");
 
-        boundaryCatalogo = new JFrame();
+        boundaryCatalogo = new JFrame("Ricerca UC");
         GridBagConstraints gbc = new GridBagConstraints();
         GridBagConstraints gbc2 = new GridBagConstraints();
         JPanel mainJpanel = new JPanel(new GridBagLayout());
@@ -109,28 +110,32 @@ public class CatalogueBoundary implements Runnable{
         gbc2.insets = new Insets(10, 10, 10, 10);
         secondatyJpanel.add(bookB, gbc2);
 
-        JSlider framesPerSecond = new JSlider(JSlider.HORIZONTAL,
-                0, 1000, 500);
+        framesPerSecond = new JSlider(JSlider.HORIZONTAL, 0, 1000, 500);
         framesPerSecond.setMajorTickSpacing(250);
         framesPerSecond.setMinorTickSpacing(50);
         framesPerSecond.setPaintTicks(true);
         framesPerSecond.setPaintLabels(true);
+        framesPerSecond.setVisible(false);
+        framesPerSecond.setEnabled(true);
 
-        JCheckBox cb = new JCheckBox("Attivazione prezzo");
+        cb = new JCheckBox("Attivazione prezzo",  false);
         cb.addItemListener(ie -> {
             if (cb.isSelected()) {
                 framesPerSecond.setVisible(true);
-                System.out.println("enabled.");
+                framesPerSecond.setEnabled(true);
+                //System.out.println("enabled.");
             } else {
                 framesPerSecond.setVisible(false);
-                System.out.println("disabled.");
+                framesPerSecond.setEnabled(true);
+                //System.out.println("disabled.");
             }
         });
+
         gbc2.gridx = 0;
         gbc2.gridy = 3;
         gbc2.anchor = GridBagConstraints.FIRST_LINE_START;
         gbc2.insets = new Insets(10, 10, 10, 10);
-        secondatyJpanel.add(new JCheckBox("Attivazione prezzo"), gbc2);
+        secondatyJpanel.add(cb, gbc2);
 
         gbc2.gridx = 0;
         gbc2.gridy = 4;
@@ -166,7 +171,7 @@ public class CatalogueBoundary implements Runnable{
         boundaryCatalogo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         boundaryCatalogo.setLocation(dim.width/2-boundaryCatalogo.getSize().width/2, dim.height/2-boundaryCatalogo.getSize().height/2);
-        boundaryCatalogo.setSize(dim.width / 8, dim.height / 8);
+        //boundaryCatalogo.setSize(700, 300);
         boundaryCatalogo.pack();
         boundaryCatalogo.setVisible(true);
 
@@ -189,17 +194,24 @@ public class CatalogueBoundary implements Runnable{
 
     private void research(int kind){
 
+        int x;
+        if(cb.isSelected()){
+            x = framesPerSecond.getValue();
+            System.out.println("è stato aggiornato il prezzo al seguente valore : " + x);
+        }
+        else
+            x = 0;
         switch (kind) {
             case 0:
                 try {
-                    CatalogueController.getInstance().createCatalogue(ResearchTF.getText(), 0, "", "", "", "", "", "", "", 0, "", 0 ,"",  list1, boundaryCatalogo);
+                    CatalogueController.getInstance().createCatalogue(ResearchTF.getText(), x, "", "", "", "", "", "", "", 0, "", 0 ,"",  list1, boundaryCatalogo);
                 } catch (SQLException e1) {
                     e1.printStackTrace();
                 }
                 break;
             case 1:
                 try {
-                    CatalogueController.getInstance().createCatalogue(nomeTF.getText(), 0, venditoreTF.getText() ,
+                    CatalogueController.getInstance().createCatalogue(nomeTF.getText(), x, venditoreTF.getText() ,
                             "Book", casaEditriceTF.getText(), autoreTF.getText(),
                             titoloTF.getText(), "", "", 0, "", 0 ,"",  list1, boundaryCatalogo);
 
@@ -210,7 +222,7 @@ public class CatalogueBoundary implements Runnable{
                 break;
             case 2:
                 try {
-                    CatalogueController.getInstance().createCatalogue(nomeTF.getText(), 0, venditoreTF.getText() ,
+                    CatalogueController.getInstance().createCatalogue(nomeTF.getText(), x, venditoreTF.getText() ,
                             "Electronics", "", "",
                             "", "", marcaTF.getText(), 0, "", 0 , modelloTF.getText(), list1, boundaryCatalogo);
                     jd.setVisible(false);
@@ -221,15 +233,15 @@ public class CatalogueBoundary implements Runnable{
                 break;
             case 3:
                 try {
-                    int x;
+                    int j;
                     try {
-                        x = Integer.parseInt(tagliaTF.getText());
+                        j = Integer.parseInt(tagliaTF.getText());
                     } catch (NumberFormatException nfe) {
-                        x = 0;
+                        j = 0;
                     }
-                    CatalogueController.getInstance().createCatalogue(nomeTF.getText(), 0, venditoreTF.getText() ,
+                    CatalogueController.getInstance().createCatalogue(nomeTF.getText(), x, venditoreTF.getText() ,
                             "Clothing", "", "",
-                            "", "", marcaTF.getText(), x, "", 0 ,"",  list1, boundaryCatalogo);
+                            "", "", marcaTF.getText(), j, "", 0 ,"",  list1, boundaryCatalogo);
 
                     this.jd.setVisible(false);
                 } catch (SQLException e1) {
