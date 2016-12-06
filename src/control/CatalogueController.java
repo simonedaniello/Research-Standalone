@@ -98,6 +98,7 @@ public class CatalogueController {
 
     }
 
+    @SuppressWarnings("Duplicates")
     private ArrayList<Article> getCatalogue(Article rq) throws SQLException {
 
         String sql = "";
@@ -106,35 +107,35 @@ public class CatalogueController {
 
             sql = "SELECT * FROM ARTICLES.libro WHERE ";
             if (!((Book) rq).getTitolo().equals("")) {
-                sql = sql + "TITOLO ='" + rq.getNome().replace("'", "'' ") + "' ";
+                sql = sql + "UPPER(TITOLO) LIKE UPPER('%" + rq.getNome().replace("'", "'' ") + "%') ";
                 isItTheFirst++;
             }
             if (!rq.getProprietario().equals("")) {
                 if (isItTheFirst != 0) {
                     sql = sql + "AND ";
                 }
-                sql = sql + "PROPRIETARIO ='" + rq.getProprietario().replace("'", "'' ") + "' ";
+                sql = sql + "UPPER(PROPRIETARIO) LIKE UPPER('%" + rq.getProprietario().replace("'", "'' ") + "%') ";
                 isItTheFirst++;
             }
             if (! rq.getNome().equals("")) {
                 if (isItTheFirst != 0) {
                     sql = sql + "AND ";
                 }
-                sql = sql + "NOME ='" + rq.getNome().replace("'", "'' ") + "' ";
+                sql = sql + "UPPER(NOME) LIKE UPPER('%" + rq.getNome().replace("'", "'' ") + "%') ";
                 isItTheFirst++;
             }
             if (!((Book) rq).getAutore().equals("")) {
                 if (isItTheFirst != 0) {
                     sql = sql + "AND ";
                 }
-                sql = sql + "AUTORE ='" + ((Book) rq).getAutore().replace("'", "'' ") + "' ";
+                sql = sql + "UPPER(AUTORE) LIKE UPPER('%" + ((Book) rq).getAutore().replace("'", "'' ") + "%') ";
                 isItTheFirst++;
             }
             if (!((Book) rq).getEditore().equals("")) {
                 if (isItTheFirst != 0) {
                     sql = sql + "AND ";
                 }
-                sql = sql + "CASA ='" + ((Book) rq).getEditore().replace("'", "'' ") + "' ";
+                sql = sql + "UPPER(CASA) LIKE UPPER('%" + ((Book) rq).getEditore().replace("'", "'' ") + "%') ";
                 isItTheFirst++;
             }
             if(rq.getPrezzo() != 0){
@@ -153,21 +154,21 @@ public class CatalogueController {
         } else if (rq.getClass().equals(Clothing.class)) {
             sql = "SELECT * FROM ARTICLES.Abbigliamento WHERE ";
             if (!((Clothing) rq).getTipo().equals("")) {
-                sql = sql + "TIPO ='" + ((Clothing) rq).getTipo().replace("'", "'' ") + "' ";
+                sql = sql + "UPPER(TIPO) LIKE UPPER('%" + ((Clothing) rq).getTipo().replace("'", "'' ") + "%') ";
                 isItTheFirst++;
             }
             if (!rq.getProprietario().equals("")) {
                 if (isItTheFirst != 0) {
                     sql = sql + "AND ";
                 }
-                sql = sql + "PROPRIETARIO ='" + rq.getProprietario().replace("'", "'' ") + "' ";
+                sql = sql + "UPPER(PROPRIETARIO) LIKE UPPER('%" + rq.getProprietario().replace("'", "'' ") + "%') ";
                 isItTheFirst++;
             }
             if (!rq.getNome().equals("")) {
                 if (isItTheFirst != 0) {
                     sql = sql + "AND ";
                 }
-                sql = sql + "NOME ='" + rq.getNome().replace("'", "'' ") + "' ";
+                sql = sql + "UPPER(NOME) LIKE UPPER('%" + rq.getNome().replace("'", "'' ") + "%') ";
                 isItTheFirst++;
             }
             if (((Clothing) rq).getTaglia() != 0) {
@@ -181,7 +182,7 @@ public class CatalogueController {
                 if (isItTheFirst != 0) {
                     sql = sql + "AND ";
                 }
-                sql = sql + "MARCA ='" + ((Clothing) rq).getMarca().replace("'", "'' ") + "' ";
+                sql = sql + "UPPER(MARCA) LIKE UPPER('%" + ((Clothing) rq).getMarca().replace("'", "'' ") + "%') ";
                 isItTheFirst++;
             }
             if(rq.getPrezzo() != 0){
@@ -195,35 +196,35 @@ public class CatalogueController {
             sql = "SELECT * FROM ARTICLES.informatica WHERE ";
             System.out.println(((Electronics) rq).getModello());
             if (!((Electronics) rq).getTipo().equals("")) {
-                sql = sql + "TIPO ='" + ((Electronics) rq).getTipo().replace("'", "'' ") + "' ";
+                sql = sql + "UPPER(TIPO) LIKE UPPER('%" + ((Electronics) rq).getTipo().replace("'", "'' ") + "%') ";
                 isItTheFirst++;
             }
             if (!rq.getProprietario().equals("")) {
                 if (isItTheFirst != 0) {
                     sql = sql + "AND ";
                 }
-                sql = sql + "PROPRIETARIO ='" + rq.getProprietario().replace("'", "'' ") + "' ";
+                sql = sql + "UPPER(PROPRIETARIO) LIKE UPPER('%" + rq.getProprietario().replace("'", "'' ") + "%') ";
                 isItTheFirst++;
             }
             if (!rq.getNome().equals("")) {
                 if (isItTheFirst != 0) {
                     sql = sql + "AND ";
                 }
-                sql = sql + "NOME ='" + rq.getNome().replace("'", "'' ") + "' ";
+                sql = sql + "UPPER(NOME) LIKE UPPER('%" + rq.getNome().replace("'", "'' ") + "%') ";
                 isItTheFirst++;
             }
             if (!((Electronics) rq).getModello().equals("")) {
                 if (isItTheFirst != 0) {
                     sql = sql + "AND ";
                 }
-                sql = sql + "MODELLO ='" + ((Electronics) rq).getModello().replace("'", "'' ") + "' ";
+                sql = sql + "UPPER(MODELLO) LIKE UPPER('%" + ((Electronics) rq).getModello().replace("'", "'' ") + "%') ";
                 isItTheFirst++;
             }
             if (!((Electronics) rq).getMarca().equals("")) {
                 if (isItTheFirst != 0) {
                     sql = sql + "AND ";
                 }
-                sql = sql + "MARCA ='" + ((Electronics) rq).getMarca().replace("'", "'' ") + "' ";
+                sql = sql + "UPPER(MARCA) LIKE UPPER('%" + ((Electronics) rq).getMarca().replace("'", "'' ") + "%') ";
                 isItTheFirst++;
             }
             if(rq.getPrezzo() != 0){
@@ -236,21 +237,21 @@ public class CatalogueController {
         } else if (rq.getClass().equals(TextBook.class)) {
             sql = "SELECT * FROM ARTICLES.Scolastico WHERE ";
             if (!((TextBook) rq).getMateria().equals("")) {
-                sql = sql + "MATERIA ='" + ((TextBook) rq).getMateria().replace("'", "'' ") + "' ";
+                sql = sql + "UPPER(MATERIA) LIKE UPPER('%" + ((TextBook) rq).getMateria().replace("'", "'' ") + "%') ";
                 isItTheFirst++;
             }
             if (!rq.getProprietario().equals("")) {
                 if (isItTheFirst != 0) {
                     sql = sql + "AND ";
                 }
-                sql = sql + "PROPRIETARIO ='" + rq.getProprietario().replace("'", "'' ") + "' ";
+                sql = sql + "UPPER(PROPRIETARIO) LIKE UPPER('%" + rq.getProprietario().replace("'", "'' ") + "%') ";
                 isItTheFirst++;
             }
             if (!rq.getNome().equals("")) {
                 if (isItTheFirst != 0) {
                     sql = sql + "AND ";
                 }
-                sql = sql + "NOME ='" + rq.getNome() + "' ";
+                sql = sql + "UPPER(NOME) LIKE UPPER('%" + rq.getNome() + "%') ";
                 isItTheFirst++;
             }
             if (((TextBook) rq).getEdizione() != 0) {
@@ -268,7 +269,7 @@ public class CatalogueController {
             }
 
         } else if (rq.getClass().equals(Article.class)) {
-            sql = "SELECT * FROM ARTICLES.articolo WHERE NOME = '" + rq.getNome().replace("'", "'' ") + "' ";
+            sql = "SELECT * FROM ARTICLES.articolo WHERE UPPER(NOME) LIKE UPPER('%" + rq.getNome().replace("'", "'' ") + "%') ";
             if(rq.getPrezzo() != 0){
                 sql = sql + "AND PREZZO < '" + rq.getPrezzo() + "' ";
             }
