@@ -29,7 +29,7 @@ public class CatalogueController {
                                 String tipoArticolo,
                                      String editore, String autore, String titolo,
                                      String tipo, String marca, int taglia, String materia,
-                                     int edizione, String modello, JList list1, JFrame frame) throws SQLException {
+                                     int edizione, String modello, JList list1) throws SQLException {
 
         DefaultListModel<String> model = new DefaultListModel<>();
 
@@ -78,6 +78,7 @@ public class CatalogueController {
             case "":
                 rq = ArticleFactory.getInstance().getArticle();
                 rq.setNome(nome);
+                rq.setPrezzo(prezzo);
                 break;
         }
 
@@ -94,8 +95,7 @@ public class CatalogueController {
             i++;
         }
         list1.setModel(model);
-        frame.setVisible(false);
-        frame.setVisible(true);
+
     }
 
     private ArrayList<Article> getCatalogue(Article rq) throws SQLException {
@@ -114,24 +114,28 @@ public class CatalogueController {
                     sql = sql + "AND ";
                 }
                 sql = sql + "PROPRIETARIO ='" + rq.getProprietario().replace("'", "'' ") + "' ";
+                isItTheFirst++;
             }
             if (! rq.getNome().equals("")) {
                 if (isItTheFirst != 0) {
                     sql = sql + "AND ";
                 }
                 sql = sql + "NOME ='" + rq.getNome().replace("'", "'' ") + "' ";
+                isItTheFirst++;
             }
             if (!((Book) rq).getAutore().equals("")) {
                 if (isItTheFirst != 0) {
                     sql = sql + "AND ";
                 }
                 sql = sql + "AUTORE ='" + ((Book) rq).getAutore().replace("'", "'' ") + "' ";
+                isItTheFirst++;
             }
             if (!((Book) rq).getEditore().equals("")) {
                 if (isItTheFirst != 0) {
                     sql = sql + "AND ";
                 }
                 sql = sql + "CASA ='" + ((Book) rq).getEditore().replace("'", "'' ") + "' ";
+                isItTheFirst++;
             }
             if(rq.getPrezzo() != 0){
                 if (isItTheFirst != 0) {
@@ -157,24 +161,28 @@ public class CatalogueController {
                     sql = sql + "AND ";
                 }
                 sql = sql + "PROPRIETARIO ='" + rq.getProprietario().replace("'", "'' ") + "' ";
+                isItTheFirst++;
             }
             if (!rq.getNome().equals("")) {
                 if (isItTheFirst != 0) {
                     sql = sql + "AND ";
                 }
                 sql = sql + "NOME ='" + rq.getNome().replace("'", "'' ") + "' ";
+                isItTheFirst++;
             }
             if (((Clothing) rq).getTaglia() != 0) {
                 if (isItTheFirst != 0) {
                     sql = sql + "AND ";
                 }
                 sql = sql + "TAGLIA ='" + ((Clothing) rq).getTaglia() + "' ";
+                isItTheFirst++;
             }
             if (!((Clothing) rq).getMarca().equals("")) {
                 if (isItTheFirst != 0) {
                     sql = sql + "AND ";
                 }
                 sql = sql + "MARCA ='" + ((Clothing) rq).getMarca().replace("'", "'' ") + "' ";
+                isItTheFirst++;
             }
             if(rq.getPrezzo() != 0){
                 if (isItTheFirst != 0) {
@@ -195,24 +203,28 @@ public class CatalogueController {
                     sql = sql + "AND ";
                 }
                 sql = sql + "PROPRIETARIO ='" + rq.getProprietario().replace("'", "'' ") + "' ";
+                isItTheFirst++;
             }
             if (!rq.getNome().equals("")) {
                 if (isItTheFirst != 0) {
                     sql = sql + "AND ";
                 }
                 sql = sql + "NOME ='" + rq.getNome().replace("'", "'' ") + "' ";
+                isItTheFirst++;
             }
             if (!((Electronics) rq).getModello().equals("")) {
                 if (isItTheFirst != 0) {
                     sql = sql + "AND ";
                 }
                 sql = sql + "MODELLO ='" + ((Electronics) rq).getModello().replace("'", "'' ") + "' ";
+                isItTheFirst++;
             }
             if (!((Electronics) rq).getMarca().equals("")) {
                 if (isItTheFirst != 0) {
                     sql = sql + "AND ";
                 }
                 sql = sql + "MARCA ='" + ((Electronics) rq).getMarca().replace("'", "'' ") + "' ";
+                isItTheFirst++;
             }
             if(rq.getPrezzo() != 0){
                 if (isItTheFirst != 0) {
@@ -232,18 +244,21 @@ public class CatalogueController {
                     sql = sql + "AND ";
                 }
                 sql = sql + "PROPRIETARIO ='" + rq.getProprietario().replace("'", "'' ") + "' ";
+                isItTheFirst++;
             }
             if (!rq.getNome().equals("")) {
                 if (isItTheFirst != 0) {
                     sql = sql + "AND ";
                 }
                 sql = sql + "NOME ='" + rq.getNome() + "' ";
+                isItTheFirst++;
             }
             if (((TextBook) rq).getEdizione() != 0) {
                 if (isItTheFirst != 0) {
                     sql = sql + "AND ";
                 }
                 sql = sql + "EDIZIONE ='" + ((TextBook) rq).getEdizione() + "' ";
+                isItTheFirst++;
             }
             if(rq.getPrezzo() != 0){
                 if (isItTheFirst != 0) {

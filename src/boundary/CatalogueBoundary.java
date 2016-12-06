@@ -122,11 +122,13 @@ public class CatalogueBoundary implements Runnable{
         cb.addItemListener(ie -> {
             if (cb.isSelected()) {
                 framesPerSecond.setVisible(true);
-                framesPerSecond.setEnabled(true);
+                boundaryCatalogo.pack();
+                boundaryCatalogo.revalidate();
                 //System.out.println("enabled.");
             } else {
                 framesPerSecond.setVisible(false);
-                framesPerSecond.setEnabled(true);
+                boundaryCatalogo.pack();
+                boundaryCatalogo.revalidate();
                 //System.out.println("disabled.");
             }
         });
@@ -204,7 +206,8 @@ public class CatalogueBoundary implements Runnable{
         switch (kind) {
             case 0:
                 try {
-                    CatalogueController.getInstance().createCatalogue(ResearchTF.getText(), x, "", "", "", "", "", "", "", 0, "", 0 ,"",  list1, boundaryCatalogo);
+                    CatalogueController.getInstance().createCatalogue(ResearchTF.getText(), x, "", "", "", "",
+                            "", "", "", 0, "", 0 ,"",  list1);
                 } catch (SQLException e1) {
                     e1.printStackTrace();
                 }
@@ -213,7 +216,7 @@ public class CatalogueBoundary implements Runnable{
                 try {
                     CatalogueController.getInstance().createCatalogue(nomeTF.getText(), x, venditoreTF.getText() ,
                             "Book", casaEditriceTF.getText(), autoreTF.getText(),
-                            titoloTF.getText(), "", "", 0, "", 0 ,"",  list1, boundaryCatalogo);
+                            titoloTF.getText(), "", "", 0, "", 0 ,"",  list1);
 
                     jd.setVisible(false);
                 } catch (SQLException e1) {
@@ -224,7 +227,7 @@ public class CatalogueBoundary implements Runnable{
                 try {
                     CatalogueController.getInstance().createCatalogue(nomeTF.getText(), x, venditoreTF.getText() ,
                             "Electronics", "", "",
-                            "", "", marcaTF.getText(), 0, "", 0 , modelloTF.getText(), list1, boundaryCatalogo);
+                            "", "", marcaTF.getText(), 0, "", 0 , modelloTF.getText(), list1);
                     jd.setVisible(false);
 
                 } catch (SQLException e1) {
@@ -241,7 +244,7 @@ public class CatalogueBoundary implements Runnable{
                     }
                     CatalogueController.getInstance().createCatalogue(nomeTF.getText(), x, venditoreTF.getText() ,
                             "Clothing", "", "",
-                            "", "", marcaTF.getText(), j, "", 0 ,"",  list1, boundaryCatalogo);
+                            "", "", marcaTF.getText(), j, "", 0 ,"",  list1);
 
                     this.jd.setVisible(false);
                 } catch (SQLException e1) {

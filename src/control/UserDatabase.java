@@ -1,12 +1,5 @@
 package control;
 
-import databaseINIT.Provider;
-import entity.Article;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 
 /**
  * @author dandi
@@ -17,7 +10,6 @@ import java.util.ArrayList;
 
 class UserDatabase extends DatabaseController {
 
-    private static Provider provider = new Provider();
     //Singleton
     private static UserDatabase instance = new UserDatabase();
 
@@ -29,7 +21,7 @@ class UserDatabase extends DatabaseController {
     }
 
 
-    @Override
+    /*@Override
     public ArrayList<Article> searchArticle(String sql) throws SQLException {
 
         Article nuovoArticolo;
@@ -52,5 +44,5 @@ class UserDatabase extends DatabaseController {
             }
         }
         return array;
-    }
+    }*/
 }
