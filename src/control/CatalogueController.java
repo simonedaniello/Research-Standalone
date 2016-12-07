@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class CatalogueController {
     //Singleton
     private static CatalogueController instance = new CatalogueController();
+    private ArrayList<Article> articoli;
 
     private CatalogueController() {
     }
@@ -25,22 +26,18 @@ public class CatalogueController {
     }
 
 
-    public void createCatalogue(String nome, float prezzo, String proprietario,
+    public synchronized DefaultListModel<String> createCatalogue(String nome,  String proprietario,
                                 String tipoArticolo,
                                      String editore, String autore, String titolo,
                                      String tipo, String marca, int taglia, String materia,
-                                     int edizione, String modello, JList list1) throws SQLException {
+                                     int edizione, String modello, DefaultListModel<String> model) throws SQLException {
 
-        DefaultListModel<String> model = new DefaultListModel<>();
-
+        model.removeAllElements();
         Article rq = null;
-
-        System.out.println(prezzo);
         switch (tipoArticolo) {
             case "Book":
                 rq = ArticleFactory.getInstance().getBook();
                 rq.setNome(nome);
-                rq.setPrezzo(prezzo);
                 rq.setProprietario(proprietario);
                 ((Book) rq).setEditore(editore);
                 ((Book) rq).setAutore(autore);
@@ -49,7 +46,6 @@ public class CatalogueController {
             case "Electronics":
                 rq = ArticleFactory.getInstance().getElectronics();
                 rq.setNome(nome);
-                rq.setPrezzo(prezzo);
                 rq.setProprietario(proprietario);
                 ((Electronics) rq).setTipo(tipo);
                 ((Electronics) rq).setMarca(marca);
@@ -58,7 +54,6 @@ public class CatalogueController {
             case "Clothing":
                 rq = ArticleFactory.getInstance().getClothing();
                 rq.setNome(nome);
-                rq.setPrezzo(prezzo);
                 rq.setProprietario(proprietario);
                 ((Clothing) rq).setTipo(tipo);
                 ((Clothing) rq).setTaglia(taglia);
@@ -67,7 +62,6 @@ public class CatalogueController {
             case "TextBook":
                 rq = ArticleFactory.getInstance().getTextBook();
                 rq.setNome(nome);
-                rq.setPrezzo(prezzo);
                 rq.setProprietario(proprietario);
                 ((Book) rq).setEditore(editore);
                 ((Book) rq).setAutore(autore);
@@ -78,23 +72,24 @@ public class CatalogueController {
             case "":
                 rq = ArticleFactory.getInstance().getArticle();
                 rq.setNome(nome);
-                rq.setPrezzo(prezzo);
                 break;
         }
 
 
-        ArrayList<Article> articoli = getCatalogue(rq);
+        articoli = getCatalogue(rq);
         System.out.println("il numero di articoli è : " + articoli.size());
+
 
         int i = 0;
         while (i<articoli.size()) {
             JLabel ciao = new JLabel();
             ciao.setText(articoli.get(i).getNome());
-            System.out.println(articoli.get(i).getNome());
             model.addElement(articoli.get(i).getNome());
+
+            System.out.println(articoli.get(i).getNome());
             i++;
         }
-        list1.setModel(model);
+        return model;
 
     }
 
@@ -136,20 +131,8 @@ public class CatalogueController {
                     sql = sql + "AND ";
                 }
                 sql = sql + "UPPER(CASA) LIKE UPPER('%" + ((Book) rq).getEditore().replace("'", "'' ") + "%') ";
-                isItTheFirst++;
             }
-            if(rq.getPrezzo() != 0){
-                if (isItTheFirst != 0) {
-                    sql = sql + "AND ";
-                }
-                sql = sql + "PREZZO <'" + rq.getPrezzo() + "' ";
-            }
-            /*if (((Book) rq).getPagine() != 0) {
-                if (isItTheFirst != 0) {
-                    sql = sql + "AND ";
-                }
-                sql = sql + "PAGINE ='" + rq.getPagine() + "' ";
-            }*/
+
 
         } else if (rq.getClass().equals(Clothing.class)) {
             sql = "SELECT * FROM ARTICLES.Abbigliamento WHERE ";
@@ -183,13 +166,6 @@ public class CatalogueController {
                     sql = sql + "AND ";
                 }
                 sql = sql + "UPPER(MARCA) LIKE UPPER('%" + ((Clothing) rq).getMarca().replace("'", "'' ") + "%') ";
-                isItTheFirst++;
-            }
-            if(rq.getPrezzo() != 0){
-                if (isItTheFirst != 0) {
-                    sql = sql + "AND ";
-                }
-                sql = sql + "PREZZO < '" + rq.getPrezzo() + "' ";
             }
 
         } else if (rq.getClass().equals(Electronics.class)) {
@@ -225,13 +201,6 @@ public class CatalogueController {
                     sql = sql + "AND ";
                 }
                 sql = sql + "UPPER(MARCA) LIKE UPPER('%" + ((Electronics) rq).getMarca().replace("'", "'' ") + "%') ";
-                isItTheFirst++;
-            }
-            if(rq.getPrezzo() != 0){
-                if (isItTheFirst != 0) {
-                    sql = sql + "AND ";
-                }
-                sql = sql + "PREZZO < '" + rq.getPrezzo() + "' ";
             }
 
         } else if (rq.getClass().equals(TextBook.class)) {
@@ -259,24 +228,30 @@ public class CatalogueController {
                     sql = sql + "AND ";
                 }
                 sql = sql + "EDIZIONE ='" + ((TextBook) rq).getEdizione() + "' ";
-                isItTheFirst++;
             }
-            if(rq.getPrezzo() != 0){
-                if (isItTheFirst != 0) {
-                    sql = sql + "AND ";
-                }
-                sql = sql + "PREZZO < '" + rq.getPrezzo() + "' ";
-            }
+
 
         } else if (rq.getClass().equals(Article.class)) {
             sql = "SELECT * FROM ARTICLES.articolo WHERE UPPER(NOME) LIKE UPPER('%" + rq.getNome().replace("'", "'' ") + "%') ";
-            if(rq.getPrezzo() != 0){
-                sql = sql + "AND PREZZO < '" + rq.getPrezzo() + "' ";
-            }
         }
 
         System.out.println(sql);
         ArrayList<Article> articoli =  UserDatabase.getInstance().searchArticle(sql);
+        for (int i = 0; i < articoli.size(); i++){
+            if(rq.getClass().equals(Book.class)){
+                sql = "SELECT * FROM ARTICLES.libro JOIN ARTICLES.articolo WHERE UPPER(ARTICLES.libro.NOME) LIKE UPPER('" + articoli.get(i).getNome() + "') AND UPPER(ARTICLES.libro.NOME) = UPPER(ARTICLES.libro.articolo)";
+                UserDatabase.getInstance().extendedQuery(sql, "Book");
+            }
+            else if(rq.getClass().equals(Electronics.class)){
+
+            }
+            else if(rq.getClass().equals(Clothing.class)){
+
+            }
+            else if(rq.getClass().equals(TextBook.class)){
+
+            }
+        }
 
         if (articoli.size() != 0){
             return articoli;
@@ -341,5 +316,15 @@ public class CatalogueController {
 
         // the distance is the cost for transforming all letters in both strings
         return valore1[len0 - 1];
+    }
+
+    public synchronized DefaultListModel<String> getArticleByPrice(int price, DefaultListModel<String> model) {
+        model.removeAllElements();
+        for (Article a : articoli) {
+            if (a.getPrezzo() < price) {
+                model.addElement(a.getNome());
+            }
+        }
+        return model;
     }
 }

@@ -5,11 +5,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 
@@ -29,10 +26,7 @@ public class CatalogueBoundary implements Runnable{
 
     //Singleton
     private static CatalogueBoundary instance = new CatalogueBoundary();
-    private  JFrame boundaryCatalogo;
     private JTextField ResearchTF;
-    private JList<Object> list1;
-
     private  JTextField titoloTF;
     private  JTextField venditoreTF;
     private  JTextField nomeTF;
@@ -42,45 +36,40 @@ public class CatalogueBoundary implements Runnable{
     private  JTextField marcaTF;
     private  JTextField modelloTF;
     private  JTextField tagliaTF;
-    private JCheckBox cb;
-    private JSlider framesPerSecond;
+
+    private JSlider slider;
 
     private  JPanel pan = new JPanel(new GridBagLayout());
     private  JDialog jd = new JDialog();
-
+    private DefaultListModel<String> model;
     private int kind;
-    private Map<String, ImageIcon> imageMap;
 
+    /* ------------------------------------------------------
+     * | Viene Sviluppata la parte grafica istanziando        |
+     * | il JFrame e tutte le componenti principali.          |
+     * | Vengono inoltre specificati i compiti dei JButton    |
+     * ------------------------------------------------------*/
     private CatalogueBoundary(){
 
 
         ResearchTF = new JTextField(20);
         JButton confResB = new JButton("OK");
-        //list1 = new KList();
-        ArrayList<String> nameList = new ArrayList<>();
-        /*{"Mario", "Luigi", "Bowser", "Koopa", "Princess"}*/
-        nameList.add("Mario");
-        nameList.add("Luigi");
-        nameList.add("Bowser");
-        imageMap = createImageMap(nameList);
-        list1 = new JList<>(nameList.toArray());
-        list1.setCellRenderer(new ListRenderer());
+
+        model = new DefaultListModel<>();
+        JList<String> list1 = new JList<>();
+        list1.setModel(model);
+        
 
         //---------------
-        try {
-            addImageMap(imageMap, "ciao", new ImageIcon(new URL("http://i.stack.imgur.com/f4T4l.png")));
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        nameList.add("ciao");
+        //list1.setCellRenderer(new ListRenderer());
         //---------------
 
-
+        JButton cb;
         JButton electronicsB = new JButton("Informatica");
         JButton clothingB = new JButton("Abbigliamento");
         JButton bookB = new JButton("libri");
 
-        boundaryCatalogo = new JFrame("Ricerca UC");
+        JFrame boundaryCatalogo = new JFrame("Ricerca UC");
         GridBagConstraints gbc = new GridBagConstraints();
         GridBagConstraints gbc2 = new GridBagConstraints();
         JPanel mainJpanel = new JPanel(new GridBagLayout());
@@ -136,28 +125,14 @@ public class CatalogueBoundary implements Runnable{
         gbc2.insets = new Insets(10, 10, 10, 10);
         secondatyJpanel.add(bookB, gbc2);
 
-        framesPerSecond = new JSlider(JSlider.HORIZONTAL, 0, 1000, 500);
-        framesPerSecond.setMajorTickSpacing(250);
-        framesPerSecond.setMinorTickSpacing(50);
-        framesPerSecond.setPaintTicks(true);
-        framesPerSecond.setPaintLabels(true);
-        framesPerSecond.setVisible(false);
-        framesPerSecond.setEnabled(true);
+        slider = new JSlider(JSlider.HORIZONTAL, 0, 1000, 500);
+        slider.setMajorTickSpacing(250);
+        slider.setMinorTickSpacing(50);
+        slider.setPaintTicks(true);
+        slider.setPaintLabels(true);
+        slider.setVisible(true);
 
-        cb = new JCheckBox("Attivazione prezzo",  false);
-        cb.addItemListener(ie -> {
-            if (cb.isSelected()) {
-                framesPerSecond.setVisible(true);
-                boundaryCatalogo.pack();
-                boundaryCatalogo.revalidate();
-                //System.out.println("enabled.");
-            } else {
-                framesPerSecond.setVisible(false);
-                boundaryCatalogo.pack();
-                boundaryCatalogo.revalidate();
-                //System.out.println("disabled.");
-            }
-        });
+        cb = new JButton("Applica prezzo");
 
         gbc2.gridx = 0;
         gbc2.gridy = 3;
@@ -169,7 +144,7 @@ public class CatalogueBoundary implements Runnable{
         gbc2.gridy = 4;
         gbc2.anchor = GridBagConstraints.FIRST_LINE_START;
         gbc2.insets = new Insets(10, 10, 10, 10);
-        secondatyJpanel.add(framesPerSecond, gbc2);
+        secondatyJpanel.add(slider, gbc2);
 
         //---------------------
         gbc.gridx = 0;
@@ -198,7 +173,7 @@ public class CatalogueBoundary implements Runnable{
         boundaryCatalogo.add(mainJpanel);
         boundaryCatalogo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        boundaryCatalogo.setLocation(dim.width/2-boundaryCatalogo.getSize().width/2, dim.height/2-boundaryCatalogo.getSize().height/2);
+        boundaryCatalogo.setLocation(dim.width/2- boundaryCatalogo.getSize().width/2, dim.height/2- boundaryCatalogo.getSize().height/2);
         //boundaryCatalogo.setSize(700, 300);
         boundaryCatalogo.pack();
         boundaryCatalogo.setVisible(true);
@@ -208,41 +183,42 @@ public class CatalogueBoundary implements Runnable{
         Actions BookAction = new Actions(1);
         Actions electronicsAction = new Actions(2);
         Actions clothingAction = new Actions(3);
+        Actions priceAction = new Actions(4);
 
         confResB.addActionListener(researchAction);
         bookB.addActionListener(BookAction);
         electronicsB.addActionListener(electronicsAction);
         clothingB.addActionListener(clothingAction);
+        cb.addActionListener(priceAction);
 
     }
 
+    /* ------------------------------------------------------
+     * | Ritorna una istanza di CatalogueBoundary            |
+     * ------------------------------------------------------*/
     public static CatalogueBoundary getInstance(){
         return instance;
     }
 
+    /* ------------------------------------------------------
+     * Fa partire l'esecuzione della ricerca sul controller |
+     * ------------------------------------------------------*/
     private void research(int kind){
 
-        int x;
-        if(cb.isSelected()){
-            x = framesPerSecond.getValue();
-            System.out.println("è stato aggiornato il prezzo al seguente valore : " + x);
-        }
-        else
-            x = 0;
         switch (kind) {
             case 0:
                 try {
-                    CatalogueController.getInstance().createCatalogue(ResearchTF.getText(), x, "", "", "", "",
-                            "", "", "", 0, "", 0 ,"",  list1);
+                    model = CatalogueController.getInstance().createCatalogue(ResearchTF.getText(),  "", "", "", "",
+                            "", "", "", 0, "", 0 ,"",  model);
                 } catch (SQLException e1) {
                     e1.printStackTrace();
                 }
                 break;
             case 1:
                 try {
-                    CatalogueController.getInstance().createCatalogue(nomeTF.getText(), x, venditoreTF.getText() ,
+                    model = CatalogueController.getInstance().createCatalogue(nomeTF.getText(),  venditoreTF.getText() ,
                             "Book", casaEditriceTF.getText(), autoreTF.getText(),
-                            titoloTF.getText(), "", "", 0, "", 0 ,"",  list1);
+                            titoloTF.getText(), "", "", 0, "", 0 ,"",  model);
 
                     jd.setVisible(false);
                 } catch (SQLException e1) {
@@ -251,9 +227,9 @@ public class CatalogueBoundary implements Runnable{
                 break;
             case 2:
                 try {
-                    CatalogueController.getInstance().createCatalogue(nomeTF.getText(), x, venditoreTF.getText() ,
+                    model = CatalogueController.getInstance().createCatalogue(nomeTF.getText(),  venditoreTF.getText() ,
                             "Electronics", "", "",
-                            "", "", marcaTF.getText(), 0, "", 0 , modelloTF.getText(), list1);
+                            "", "", marcaTF.getText(), 0, "", 0 , modelloTF.getText(), model);
                     jd.setVisible(false);
 
                 } catch (SQLException e1) {
@@ -268,9 +244,9 @@ public class CatalogueBoundary implements Runnable{
                     } catch (NumberFormatException nfe) {
                         j = 0;
                     }
-                    CatalogueController.getInstance().createCatalogue(nomeTF.getText(), x, venditoreTF.getText() ,
+                    model = CatalogueController.getInstance().createCatalogue(nomeTF.getText(),  venditoreTF.getText() ,
                             "Clothing", "", "",
-                            "", "", marcaTF.getText(), j, "", 0 ,"",  list1);
+                            "", "", marcaTF.getText(), j, "", 0 ,"",  model);
 
                     this.jd.setVisible(false);
                 } catch (SQLException e1) {
@@ -280,13 +256,18 @@ public class CatalogueBoundary implements Runnable{
         }
     }
 
+    /*Chiama research. Swing non è thread safe. momentaneamente nessuno chiama questa funzione*/
     @Override
     public void run() {
+        Timer timer = new Timer(5000, new TimerActionListener());
+        timer.start();
         research(this.kind);
+        timer.stop();
     }
 
+    /* Implementazione dei metodi delle esecuzioni dei JButton*/
     private class Actions implements ActionListener {
-        int azione;
+        private int azione;
         private GridBagConstraints gbc;
         private JButton okButton = new JButton("OK");
         private JButton cancelButton = new JButton("Indietro");
@@ -301,9 +282,10 @@ public class CatalogueBoundary implements Runnable{
         public void actionPerformed(ActionEvent event){
             switch (this.azione) {
                 case 0:
-                    CatalogueBoundary.getInstance().kind = 0;
-                    thread = new Thread(CatalogueBoundary.getInstance());
-                    thread.start();
+                    kind = 0;
+                    /*thread = new Thread(CatalogueBoundary.getInstance());
+                    thread.start();*/
+                    research(kind);
                     break;
                 case 1:
                     CatalogueBoundary.getInstance().jd.setVisible(false);
@@ -398,9 +380,10 @@ public class CatalogueBoundary implements Runnable{
                     CatalogueBoundary.getInstance().jd.setVisible(true);
                     //okButton.addActionListener(e12 -> research(1));
                     okButton.addActionListener(e1 -> {
-                        CatalogueBoundary.getInstance().kind= 1;
-                        thread = new Thread(CatalogueBoundary.getInstance());
-                        thread.start();
+                        kind= 1;
+                        /*thread = new Thread(CatalogueBoundary.getInstance());
+                        thread.start();*/
+                        research(kind);
                     });
 
                     cancelButton.addActionListener(e12 -> jd.setVisible(false));
@@ -500,9 +483,10 @@ public class CatalogueBoundary implements Runnable{
 
                     //okButton.addActionListener(e12 -> research(2));
                     okButton.addActionListener(e1 -> {
-                        CatalogueBoundary.getInstance().kind = 2;
-                        thread = new Thread(CatalogueBoundary.getInstance());
-                        thread.start();
+                        kind = 2;
+                        /*thread = new Thread(CatalogueBoundary.getInstance());
+                        thread.start();*/
+                        research(kind);
                     });
                     cancelButton.addActionListener(e12 -> jd.setVisible(false));
 
@@ -600,51 +584,26 @@ public class CatalogueBoundary implements Runnable{
 
                     //okButton.addActionListener(e12 -> research(3));
                     okButton.addActionListener(e1 -> {
-                        CatalogueBoundary.getInstance().kind = 3;
-                        thread = new Thread(CatalogueBoundary.getInstance());
-                        thread.start();
+                        kind = 3;
+                        /*thread = new Thread(CatalogueBoundary.getInstance());
+                        thread.start();*/
+                        research(kind);
                     });
                     cancelButton.addActionListener(e12 -> jd.setVisible(false));
+                    break;
+                case 4:
+                    model = CatalogueController.getInstance().getArticleByPrice(slider.getValue(), model);
+                    System.out.println(slider.getValue());
                     break;
             }
         }
     }
 
-
-
-
-    private class ListRenderer extends DefaultListCellRenderer {
-
-
+    /* Controllo del timer*/
+    private class TimerActionListener implements ActionListener {
         @Override
-        public Component getListCellRendererComponent(
-                JList list, Object value, int index,
-                boolean isSelected, boolean cellHasFocus) {
-
-            JLabel label = (JLabel) super.getListCellRendererComponent(
-                    list, value, index, isSelected, cellHasFocus);
-            label.setIcon(imageMap.get(value));
-            label.setHorizontalTextPosition(JLabel.RIGHT);
-            return label;
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("errore");
         }
     }
-
-    private Map<String, ImageIcon> createImageMap(ArrayList<String> list) {
-        Map<String, ImageIcon> map = new HashMap<>();
-        try {
-            map.put("Mario", new ImageIcon(new URL("http://i.stack.imgur.com/NCsHu.png")));
-            map.put("Luigi", new ImageIcon(new URL("http://i.stack.imgur.com/UvHN4.png")));
-            map.put("Bowser", new ImageIcon(new URL("http://i.stack.imgur.com/s89ON.png")));
-            map.put("Koopa", new ImageIcon(new URL("http://i.stack.imgur.com/QEK2o.png")));
-            map.put("Princess", new ImageIcon(new URL("http://i.stack.imgur.com/f4T4l.png")));
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return map;
-    }
-
-    void addImageMap(Map<String, ImageIcon> map, String stringa, ImageIcon icona){
-        map.put(stringa, icona);
-    }
-
 }
