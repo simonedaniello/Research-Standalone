@@ -5,8 +5,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.sql.SQLException;
-
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -27,7 +31,7 @@ public class CatalogueBoundary implements Runnable{
     private static CatalogueBoundary instance = new CatalogueBoundary();
     private  JFrame boundaryCatalogo;
     private JTextField ResearchTF;
-    private JList list1;
+    private JList<Object> list1;
 
     private  JTextField titoloTF;
     private  JTextField venditoreTF;
@@ -45,11 +49,33 @@ public class CatalogueBoundary implements Runnable{
     private  JDialog jd = new JDialog();
 
     private int kind;
+    private Map<String, ImageIcon> imageMap;
 
     private CatalogueBoundary(){
+
+
         ResearchTF = new JTextField(20);
         JButton confResB = new JButton("OK");
-        list1 = new JList();
+        //list1 = new KList();
+        ArrayList<String> nameList = new ArrayList<>();
+        /*{"Mario", "Luigi", "Bowser", "Koopa", "Princess"}*/
+        nameList.add("Mario");
+        nameList.add("Luigi");
+        nameList.add("Bowser");
+        imageMap = createImageMap(nameList);
+        list1 = new JList<>(nameList.toArray());
+        list1.setCellRenderer(new ListRenderer());
+
+        //---------------
+        try {
+            addImageMap(imageMap, "ciao", new ImageIcon(new URL("http://i.stack.imgur.com/f4T4l.png")));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        nameList.add("ciao");
+        //---------------
+
+
         JButton electronicsB = new JButton("Informatica");
         JButton clothingB = new JButton("Abbigliamento");
         JButton bookB = new JButton("libri");
@@ -584,5 +610,41 @@ public class CatalogueBoundary implements Runnable{
         }
     }
 
+
+
+
+    private class ListRenderer extends DefaultListCellRenderer {
+
+
+        @Override
+        public Component getListCellRendererComponent(
+                JList list, Object value, int index,
+                boolean isSelected, boolean cellHasFocus) {
+
+            JLabel label = (JLabel) super.getListCellRendererComponent(
+                    list, value, index, isSelected, cellHasFocus);
+            label.setIcon(imageMap.get(value));
+            label.setHorizontalTextPosition(JLabel.RIGHT);
+            return label;
+        }
+    }
+
+    private Map<String, ImageIcon> createImageMap(ArrayList<String> list) {
+        Map<String, ImageIcon> map = new HashMap<>();
+        try {
+            map.put("Mario", new ImageIcon(new URL("http://i.stack.imgur.com/NCsHu.png")));
+            map.put("Luigi", new ImageIcon(new URL("http://i.stack.imgur.com/UvHN4.png")));
+            map.put("Bowser", new ImageIcon(new URL("http://i.stack.imgur.com/s89ON.png")));
+            map.put("Koopa", new ImageIcon(new URL("http://i.stack.imgur.com/QEK2o.png")));
+            map.put("Princess", new ImageIcon(new URL("http://i.stack.imgur.com/f4T4l.png")));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return map;
+    }
+
+    void addImageMap(Map<String, ImageIcon> map, String stringa, ImageIcon icona){
+        map.put(stringa, icona);
+    }
 
 }
