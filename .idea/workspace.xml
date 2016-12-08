@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="457423e3-0dfd-4909-992e-738942799c5d" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/images/Success.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ResearchSTDALN/boundary/CatalogueBoundary.class" afterPath="$PROJECT_DIR$/out/production/ResearchSTDALN/boundary/CatalogueBoundary.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ResearchSTDALN/control/CatalogueController.class" afterPath="$PROJECT_DIR$/out/production/ResearchSTDALN/control/CatalogueController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ResearchSTDALN/control/DatabaseController.class" afterPath="$PROJECT_DIR$/out/production/ResearchSTDALN/control/DatabaseController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boundary/CatalogueBoundary.java" afterPath="$PROJECT_DIR$/src/boundary/CatalogueBoundary.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/CatalogueController.java" afterPath="$PROJECT_DIR$/src/control/CatalogueController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/DatabaseController.java" afterPath="$PROJECT_DIR$/src/control/DatabaseController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/UserDatabase.java" afterPath="$PROJECT_DIR$/src/control/UserDatabase.java" />
     </list>
     <ignored path="ResearchSTDALN.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -49,7 +43,7 @@
       <file leaf-file-name="CatalogueBoundary.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/boundary/CatalogueBoundary.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
+            <state relative-caret-position="18">
               <caret line="284" column="29" selection-start-line="284" selection-start-column="29" selection-end-line="284" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -77,12 +71,10 @@
       <file leaf-file-name="CatalogueController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/control/CatalogueController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="472">
-              <caret line="242" column="47" selection-start-line="242" selection-start-column="47" selection-end-line="242" selection-end-column="47" />
+            <state relative-caret-position="595">
+              <caret line="255" column="34" selection-start-line="255" selection-start-column="34" selection-end-line="255" selection-end-column="34" />
               <folding>
                 <element signature="method#CatalogueController#0;class#CatalogueController#0" expanded="false" />
-                <element signature="method#createCatalogue#0;class#CatalogueController#0" expanded="false" />
-                <element signature="e#3151#3182#0" expanded="true" />
                 <element signature="method#levenshtein#0;class#CatalogueController#0" expanded="false" />
                 <element signature="method#getArticleByPrice#0;class#CatalogueController#0" expanded="false" />
               </folding>
@@ -90,11 +82,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="DBinit.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/databaseINIT/DBinit.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="414">
+              <caret line="101" column="21" selection-start-line="101" selection-start-column="21" selection-end-line="101" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="DatabaseController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/control/DatabaseController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="598">
-              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+            <state relative-caret-position="1044">
+              <caret line="64" column="78" selection-start-line="64" selection-start-column="78" selection-end-line="64" selection-end-column="78" />
               <folding />
             </state>
           </provider>
@@ -105,7 +107,10 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
               <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-              <folding />
+              <folding>
+                <element signature="e#316#317#0" expanded="false" />
+                <element signature="e#347#348#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -192,9 +197,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -259,12 +263,49 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="databaseINIT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ResearchSTDALN" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ResearchSTDALN" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="control" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ResearchSTDALN" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ResearchSTDALN" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="boundary" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -847,7 +888,8 @@
       <workItem from="1481103256542" duration="1660000" />
       <workItem from="1481105487410" duration="591000" />
       <workItem from="1481113850090" duration="4037000" />
-      <workItem from="1481126883288" duration="7395000" />
+      <workItem from="1481126883288" duration="7417000" />
+      <workItem from="1481192584126" duration="2052000" />
     </task>
     <task id="LOCAL-00001" summary="Listeners adjustement">
       <created>1480873309362</created>
@@ -905,11 +947,18 @@
       <option name="project" value="LOCAL" />
       <updated>1481107785929</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="savings">
+      <created>1481134286938</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1481134286938</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88242000" />
+    <option name="totallyTimeSpent" value="90316000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1366" y="24" width="1920" height="1056" extended-state="6" />
@@ -993,7 +1042,8 @@
     <MESSAGE value="SQL query is the last thing to do" />
     <MESSAGE value="thanks to giulia" />
     <MESSAGE value="updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="updates" />
+    <MESSAGE value="savings" />
+    <option name="LAST_COMMIT_MESSAGE" value="savings" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1025,7 +1075,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="32" column="76" selection-start-line="32" selection-start-column="76" selection-end-line="32" selection-end-column="76" />
-          <folding />
+          <folding>
+            <element signature="e#316#317#0" expanded="false" />
+            <element signature="e#347#348#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1097,7 +1150,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="32" column="76" selection-start-line="32" selection-start-column="76" selection-end-line="32" selection-end-column="76" />
-          <folding />
+          <folding>
+            <element signature="e#316#317#0" expanded="false" />
+            <element signature="e#347#348#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1114,8 +1170,6 @@
           <caret line="32" column="98" selection-start-line="32" selection-start-column="98" selection-end-line="32" selection-end-column="98" />
           <folding>
             <element signature="method#CatalogueController#0;class#CatalogueController#0" expanded="false" />
-            <element signature="method#createCatalogue#0;class#CatalogueController#0" expanded="false" />
-            <element signature="e#3151#3182#0" expanded="true" />
             <element signature="method#levenshtein#0;class#CatalogueController#0" expanded="false" />
             <element signature="method#getArticleByPrice#0;class#CatalogueController#0" expanded="false" />
           </folding>
@@ -1154,7 +1208,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="720">
           <caret line="48" column="24" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="24" />
-          <folding />
+          <folding>
+            <element signature="e#316#317#0" expanded="false" />
+            <element signature="e#347#348#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1171,8 +1228,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="method#CatalogueController#0;class#CatalogueController#0" expanded="false" />
-            <element signature="method#createCatalogue#0;class#CatalogueController#0" expanded="false" />
-            <element signature="e#3151#3182#0" expanded="true" />
             <element signature="method#levenshtein#0;class#CatalogueController#0" expanded="false" />
             <element signature="method#getArticleByPrice#0;class#CatalogueController#0" expanded="false" />
           </folding>
@@ -1227,7 +1282,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="30" column="47" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="47" />
-          <folding />
+          <folding>
+            <element signature="e#316#317#0" expanded="false" />
+            <element signature="e#347#348#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1315,24 +1373,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/images/Success.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/databaseINIT/DBinit.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="73" column="34" selection-start-line="73" selection-start-column="34" selection-end-line="73" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/images/Success.png" />
     <entry file="file://$PROJECT_DIR$/src/control/UserDatabase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#316#317#0" expanded="false" />
+            <element signature="e#347#348#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boundary/CatalogueBoundary.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="284" column="29" selection-start-line="284" selection-start-column="29" selection-end-line="284" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#CatalogueBoundary#0;class#CatalogueBoundary#0" expanded="false" />
+            <element signature="method#research#0;class#CatalogueBoundary#0" expanded="false" />
+            <marker date="1481133183277" expanded="true" signature="5581:5825" ph="//..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1347,35 +1409,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/boundary/CatalogueBoundary.java">
+    <entry file="file://$PROJECT_DIR$/src/control/DatabaseController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="284" column="29" selection-start-line="284" selection-start-column="29" selection-end-line="284" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#CatalogueBoundary#0;class#CatalogueBoundary#0" expanded="false" />
-            <element signature="method#research#0;class#CatalogueBoundary#0" expanded="false" />
-            <marker date="1481133183277" expanded="true" signature="5581:5825" ph="//..." />
-          </folding>
+        <state relative-caret-position="1044">
+          <caret line="64" column="78" selection-start-line="64" selection-start-column="78" selection-end-line="64" selection-end-column="78" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/DatabaseController.java">
+    <entry file="file://$PROJECT_DIR$/src/databaseINIT/DBinit.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+        <state relative-caret-position="414">
+          <caret line="101" column="21" selection-start-line="101" selection-start-column="21" selection-end-line="101" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/control/CatalogueController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
-          <caret line="242" column="47" selection-start-line="242" selection-start-column="47" selection-end-line="242" selection-end-column="47" />
+        <state relative-caret-position="595">
+          <caret line="255" column="34" selection-start-line="255" selection-start-column="34" selection-end-line="255" selection-end-column="34" />
           <folding>
             <element signature="method#CatalogueController#0;class#CatalogueController#0" expanded="false" />
-            <element signature="method#createCatalogue#0;class#CatalogueController#0" expanded="false" />
-            <element signature="e#3151#3182#0" expanded="true" />
             <element signature="method#levenshtein#0;class#CatalogueController#0" expanded="false" />
             <element signature="method#getArticleByPrice#0;class#CatalogueController#0" expanded="false" />
           </folding>
