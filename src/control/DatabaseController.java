@@ -41,8 +41,8 @@ abstract class DatabaseController {
     }
 
     Article extendedQuery(String sql, String kind) throws SQLException {
-        Article nuovoArticolo = null;
         ResultSet rs = null;
+        Article nuovoArticolo = null;
         try {
             Statement stmt = provider.getConnection().createStatement();
             rs = stmt.executeQuery(sql);
@@ -52,28 +52,35 @@ abstract class DatabaseController {
         if (rs != null) {
             if(rs.next())
             {
-                nuovoArticolo = new Article();
-                nuovoArticolo.setNome(rs.getString("NOME"));
-                nuovoArticolo.setProprietario(rs.getString("PROPRIETARIO"));
-                nuovoArticolo.setPrezzo(rs.getFloat("PREZZO"));
-                nuovoArticolo.setQuantità(rs.getInt("QUANTITA"));
                 switch (kind) {
                     case "Book":
-                        ((Book) nuovoArticolo).setTitolo(rs.getString("TITOLO"));
-                        ((Book) nuovoArticolo).setAutore(rs.getString("AUTORE"));
-                        ((Book) nuovoArticolo).setEditore(rs.getString("CASA"));
-                        ((Book) nuovoArticolo).setPagine(rs.getInt("PAGINE"));
+                        nuovoArticolo = new Book();
+                        nuovoArticolo.setNome(rs.getString("NOME"));
+                        nuovoArticolo.setProprietario(rs.getString("PROPRIETARIO"));
+                        nuovoArticolo.setPrezzo(rs.getFloat("PREZZO"));
+                        nuovoArticolo.setQuantità(rs.getInt("QUANTITA"));
+                        ((Book)nuovoArticolo).setTitolo(rs.getString("TITOLO"));
+                        ((Book)nuovoArticolo).setAutore(rs.getString("AUTORE"));
+                        ((Book)nuovoArticolo).setEditore(rs.getString("CASA"));
+                        ((Book)nuovoArticolo).setPagine(rs.getInt("PAGINE"));
                         break;
                     case "Electronics":
+                        nuovoArticolo = new Electronics();
+                        nuovoArticolo.setNome(rs.getString("NOME"));
+                        nuovoArticolo.setProprietario(rs.getString("PROPRIETARIO"));
+                        nuovoArticolo.setPrezzo(rs.getFloat("PREZZO"));
+                        nuovoArticolo.setQuantità(rs.getInt("QUANTITA"));
                         ((Electronics) nuovoArticolo).setModello(rs.getString("MODELLO"));
                         ((Electronics) nuovoArticolo).setMarca(rs.getString("MARCA"));
                         break;
                     case "Clothing":
+                        nuovoArticolo = new Clothing();
                         ((Clothing) nuovoArticolo).setTaglia(rs.getInt("TAGLIA"));
                         ((Clothing) nuovoArticolo).setTipo(rs.getString("TIPO"));
                         ((Clothing) nuovoArticolo).setMarca(rs.getString("MARCA"));
                         break;
                     case "TextBook":
+                        nuovoArticolo = new TextBook();
                         ((TextBook) nuovoArticolo).setEdizione(rs.getInt("EDIZIONE"));
                         ((TextBook) nuovoArticolo).setMateria(rs.getString("MATERIA"));
                         break;
