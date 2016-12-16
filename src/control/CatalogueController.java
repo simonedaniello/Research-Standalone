@@ -26,9 +26,8 @@ public class CatalogueController {
     }
 
 
-    public synchronized DefaultListModel<String> createCatalogue(String nome,  String proprietario,
-                                String tipoArticolo,
-                                     String editore, String autore, String titolo,
+    public  DefaultListModel<String> createCatalogue(String nome,  String proprietario,
+                                String tipoArticolo, String editore, String autore, String titolo,
                                      String tipo, String marca, int taglia, String materia,
                                      int edizione, String modello, DefaultListModel<String> model) throws SQLException {
 
@@ -234,9 +233,16 @@ public class CatalogueController {
         } else if (rq.getClass().equals(Article.class)) {
             sql = "SELECT * FROM ARTICLES.articolo WHERE UPPER(NOME) LIKE UPPER('%" + rq.getNome().replace("'", "'' ") + "%') ";
         }
-
+        ArrayList<Article> articoli;
+        if(     sql.equals("SELECT * FROM ARTICLES.libro WHERE ") ||
+                sql.equals("SELECT * FROM ARTICLES.Abbigliamento WHERE ") ||
+                sql.equals("SELECT * FROM ARTICLES.informatica WHERE ") ||
+                sql.equals("SELECT * FROM ARTICLES.Scolastico WHERE ")){
+            articoli = new ArrayList<>();
+            return articoli;
+        }
         System.out.println(sql);
-        ArrayList<Article> articoli =  UserDatabase.getInstance().searchArticle(sql);
+        articoli =  UserDatabase.getInstance().searchArticle(sql);
         for (int i = 0; i < articoli.size(); i++) {
             if (rq.getClass().equals(Book.class)) {
                 sql = "SELECT * FROM ARTICLES.libro, ARTICLES.articolo WHERE UPPER(ARTICLES.libro.NOME) LIKE UPPER('" + articoli.get(i).getNome().replace("'", "''") + "') AND UPPER(ARTICLES.libro.NOME) = UPPER(ARTICLES.articolo.NOME)";
@@ -276,7 +282,6 @@ public class CatalogueController {
                 return articoli;
         }
     }
-
 
     private int levenshtein (CharSequence stringa1, CharSequence stringa2) {
         int len0 = stringa1.length() + 1;
@@ -318,12 +323,15 @@ public class CatalogueController {
         return valore1[len0 - 1];
     }
 
-    public synchronized DefaultListModel<String> getArticleByPrice(int price, DefaultListModel<String> model) {
+    public DefaultListModel<String> getArticleByPrice(int price, DefaultListModel<String> model) {
         model.removeAllElements();
         for (Article a : articoli) {
             if (a.getPrezzo() < price) {
                 model.addElement(a.getNome());
+                System.out.println("rimasto : " + a.getNome() + " con prezzo : " + a.getPrezzo());
             }
+            else
+                System.out.println("eliminato : " + a.getNome() + " con prezzo : " + a.getPrezzo());
         }
         return model;
     }

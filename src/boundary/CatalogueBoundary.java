@@ -22,7 +22,7 @@ import java.util.Map;
  */
 
 
-public class CatalogueBoundary implements Runnable{
+public class CatalogueBoundary{
 
     //Singleton
     private static CatalogueBoundary instance = new CatalogueBoundary();
@@ -36,7 +36,7 @@ public class CatalogueBoundary implements Runnable{
     private  JTextField marcaTF;
     private  JTextField modelloTF;
     private  JTextField tagliaTF;
-
+    private JCheckBox textBook;
     private JSlider slider;
 
     private  JPanel pan = new JPanel(new GridBagLayout());
@@ -58,6 +58,7 @@ public class CatalogueBoundary implements Runnable{
         model = new DefaultListModel<>();
         JList<String> list1 = new JList<>();
         list1.setModel(model);
+        JScrollPane scrollpane = new JScrollPane(list1);
         
 
         //---------------
@@ -168,13 +169,14 @@ public class CatalogueBoundary implements Runnable{
         gbc.gridy = 1;
         gbc.anchor = GridBagConstraints.PAGE_START;
         gbc.insets = new Insets(10, 10, 10, 10);
-        mainJpanel.add(list1, gbc);
+        mainJpanel.add(scrollpane, gbc);
 
         boundaryCatalogo.add(mainJpanel);
         boundaryCatalogo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         boundaryCatalogo.setLocation(dim.width/2- boundaryCatalogo.getSize().width/2, dim.height/2- boundaryCatalogo.getSize().height/2);
         //boundaryCatalogo.setSize(700, 300);
+        boundaryCatalogo.setResizable(false);
         boundaryCatalogo.pack();
         boundaryCatalogo.setVisible(true);
 
@@ -216,10 +218,16 @@ public class CatalogueBoundary implements Runnable{
                 break;
             case 1:
                 try {
-                    model = CatalogueController.getInstance().createCatalogue(nomeTF.getText(),  venditoreTF.getText() ,
-                            "Book", casaEditriceTF.getText(), autoreTF.getText(),
-                            titoloTF.getText(), "", "", 0, "", 0 ,"",  model);
-
+                    if(!textBook.isSelected()) {
+                        model = CatalogueController.getInstance().createCatalogue(nomeTF.getText(), venditoreTF.getText(),
+                                "Book", casaEditriceTF.getText(), autoreTF.getText(),
+                                titoloTF.getText(), "", "", 0, "", 0, "", model);
+                    }
+                    else {
+                        model = CatalogueController.getInstance().createCatalogue(nomeTF.getText(), venditoreTF.getText(),
+                                "TextBook", casaEditriceTF.getText(), autoreTF.getText(),
+                                titoloTF.getText(), "", "", 0, "", 0, "", model);
+                    }
                     jd.setVisible(false);
                 } catch (SQLException e1) {
                     e1.printStackTrace();
@@ -256,14 +264,6 @@ public class CatalogueBoundary implements Runnable{
         }
     }
 
-    /*Chiama research. Swing non è thread safe. momentaneamente nessuno chiama questa funzione*/
-    @Override
-    public void run() {
-        Timer timer = new Timer(5000, new TimerActionListener());
-        timer.start();
-        research(this.kind);
-        timer.stop();
-    }
 
     /* Implementazione dei metodi delle esecuzioni dei JButton*/
     private class Actions implements ActionListener {
@@ -271,9 +271,6 @@ public class CatalogueBoundary implements Runnable{
         private GridBagConstraints gbc;
         private JButton okButton = new JButton("OK");
         private JButton cancelButton = new JButton("Indietro");
-
-        private Thread thread;
-
 
         private Actions(int azione){
             this.azione = azione;
@@ -283,8 +280,6 @@ public class CatalogueBoundary implements Runnable{
             switch (this.azione) {
                 case 0:
                     kind = 0;
-                    /*thread = new Thread(CatalogueBoundary.getInstance());
-                    thread.start();*/
                     research(kind);
                     break;
                 case 1:
@@ -296,7 +291,7 @@ public class CatalogueBoundary implements Runnable{
                     CatalogueBoundary.getInstance().nomeTF = new JTextField(20);
                     CatalogueBoundary.getInstance().casaEditriceTF = new JTextField(20);
                     CatalogueBoundary.getInstance().autoreTF = new JTextField(20);
-
+                    CatalogueBoundary.getInstance().textBook = new JCheckBox();
                     CatalogueBoundary.getInstance().pan.setLayout(new GridBagLayout());
                     gbc = new GridBagConstraints();
 
@@ -362,12 +357,24 @@ public class CatalogueBoundary implements Runnable{
 
                     gbc.gridx = 0;
                     gbc.gridy = 10;
+                    gbc.anchor = GridBagConstraints.PAGE_START;
+                    gbc.insets = new Insets(10, 0, 0, 10);
+                    CatalogueBoundary.getInstance().pan.add(new JLabel("Testo scolastico"), gbc);
+
+                    gbc.gridx = 0;
+                    gbc.gridy = 11;
+                    gbc.anchor = GridBagConstraints.PAGE_START;
+                    gbc.insets = new Insets(10, 10, 10, 10);
+                    CatalogueBoundary.getInstance().pan.add(CatalogueBoundary.getInstance().textBook, gbc);
+
+                    gbc.gridx = 0;
+                    gbc.gridy = 12;
                     gbc.anchor = GridBagConstraints.FIRST_LINE_START;
                     gbc.insets = new Insets(10, 10, 10, 10);
                     CatalogueBoundary.getInstance().pan.add(okButton, gbc);
 
                     gbc.gridx = 0;
-                    gbc.gridy = 10;
+                    gbc.gridy = 12;
                     gbc.anchor = GridBagConstraints.FIRST_LINE_END;
                     gbc.insets = new Insets(10, 10, 10, 10);
                     CatalogueBoundary.getInstance().pan.add(cancelButton, gbc);
@@ -484,8 +491,6 @@ public class CatalogueBoundary implements Runnable{
                     //okButton.addActionListener(e12 -> research(2));
                     okButton.addActionListener(e1 -> {
                         kind = 2;
-                        /*thread = new Thread(CatalogueBoundary.getInstance());
-                        thread.start();*/
                         research(kind);
                     });
                     cancelButton.addActionListener(e12 -> jd.setVisible(false));
@@ -585,8 +590,6 @@ public class CatalogueBoundary implements Runnable{
                     //okButton.addActionListener(e12 -> research(3));
                     okButton.addActionListener(e1 -> {
                         kind = 3;
-                        /*thread = new Thread(CatalogueBoundary.getInstance());
-                        thread.start();*/
                         research(kind);
                     });
                     cancelButton.addActionListener(e12 -> jd.setVisible(false));

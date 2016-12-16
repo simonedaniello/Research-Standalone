@@ -34,6 +34,8 @@ abstract class DatabaseController {
             {
                 nuovoArticolo = new Article();
                 nuovoArticolo.setNome(rs.getString("NOME"));
+                nuovoArticolo.setPrezzo(rs.getFloat("PREZZO"));
+                nuovoArticolo.setProprietario(rs.getString("PROPRIETARIO"));
                 array.add(nuovoArticolo);
             }
         }
