@@ -237,19 +237,19 @@ public class CatalogueController {
 
         System.out.println(sql);
         ArrayList<Article> articoli =  UserDatabase.getInstance().searchArticle(sql);
-        for (Article a : articoli) {
+        for (int i = 0; i < articoli.size(); i++) {
             if (rq.getClass().equals(Book.class)) {
-                sql = "SELECT * FROM ARTICLES.libro, ARTICLES.articolo WHERE UPPER(ARTICLES.libro.NOME) LIKE UPPER('" + a.getNome() + "') AND UPPER(ARTICLES.libro.NOME) = UPPER(ARTICLES.articolo.NOME)";
-                a = UserDatabase.getInstance().extendedQuery(sql, "Book");
+                sql = "SELECT * FROM ARTICLES.libro, ARTICLES.articolo WHERE UPPER(ARTICLES.libro.NOME) LIKE UPPER('" + articoli.get(i).getNome().replace("'", "''") + "') AND UPPER(ARTICLES.libro.NOME) = UPPER(ARTICLES.articolo.NOME)";
+                articoli.set(i, UserDatabase.getInstance().extendedQuery(sql, "Book"));
             } else if (rq.getClass().equals(Electronics.class)) {
-                sql = "SELECT * FROM ARTICLES.informatica , ARTICLES.articolo WHERE UPPER(ARTICLES.informatica.NOME) LIKE UPPER('" + a.getNome() + "') AND UPPER(ARTICLES.informatica.NOME) = UPPER(ARTICLES.articolo.NOME)";
-                a = UserDatabase.getInstance().extendedQuery(sql, "Electronics");
+                sql = "SELECT * FROM ARTICLES.informatica , ARTICLES.articolo WHERE UPPER(ARTICLES.informatica.NOME) LIKE UPPER('" + articoli.get(i).getNome().replace("'", "''")  + "') AND UPPER(ARTICLES.informatica.NOME) = UPPER(ARTICLES.articolo.NOME)";
+                articoli.set(i, UserDatabase.getInstance().extendedQuery(sql, "Electronics"));
             } else if (rq.getClass().equals(Clothing.class)) {
-                sql = "SELECT * FROM ARTICLES.Abbigliamento, ARTICLES.articolo WHERE UPPER(ARTICLES.Abbigliamento.NOME) LIKE UPPER('" + a.getNome() + "') AND UPPER(ARTICLES.Abbigliamento.NOME) = UPPER(ARTICLES.articolo.NOME)";
-                a = UserDatabase.getInstance().extendedQuery(sql, "Clothing");
+                sql = "SELECT * FROM ARTICLES.Abbigliamento, ARTICLES.articolo WHERE UPPER(ARTICLES.Abbigliamento.NOME) LIKE UPPER('" + articoli.get(i).getNome().replace("'", "''")  + "') AND UPPER(ARTICLES.Abbigliamento.NOME) = UPPER(ARTICLES.articolo.NOME)";
+                articoli.set(i, UserDatabase.getInstance().extendedQuery(sql, "Clothing"));
             } else if (rq.getClass().equals(TextBook.class)) {
-                sql = "SELECT * FROM ARTICLES.Scolastico, ARTICLES.articolo WHERE UPPER(ARTICLES.Scolastico.NOME) LIKE UPPER('" + a.getNome() + "') AND UPPER(ARTICLES.Scolastico.NOME) = UPPER(ARTICLES.articolo.NOME)";
-                a = UserDatabase.getInstance().extendedQuery(sql, "TextBook");
+                sql = "SELECT * FROM ARTICLES.Scolastico, ARTICLES.articolo WHERE UPPER(ARTICLES.Scolastico.NOME) LIKE UPPER('" + articoli.get(i).getNome().replace("'", "''")  + "') AND UPPER(ARTICLES.Scolastico.NOME) = UPPER(ARTICLES.articolo.NOME)";
+                articoli.set(i, UserDatabase.getInstance().extendedQuery(sql, "TextBook"));
             }
         }
 
