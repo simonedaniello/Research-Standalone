@@ -5,9 +5,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Map;
 
 
 /**
@@ -224,9 +223,9 @@ public class CatalogueBoundary{
                                 titoloTF.getText(), "", "", 0, "", 0, "", model);
                     }
                     else {
-                        model = CatalogueController.getInstance().createCatalogue(nomeTF.getText(), venditoreTF.getText(),
+                        model = CatalogueController.getInstance().createCatalogue(nomeTF.getText(),"",
                                 "TextBook", casaEditriceTF.getText(), autoreTF.getText(),
-                                titoloTF.getText(), "", "", 0, "", 0, "", model);
+                                titoloTF.getText(), "", "", 0, venditoreTF.getText() , 0, "", model);
                     }
                     jd.setVisible(false);
                 } catch (SQLException e1) {
@@ -292,6 +291,14 @@ public class CatalogueBoundary{
                     CatalogueBoundary.getInstance().casaEditriceTF = new JTextField(20);
                     CatalogueBoundary.getInstance().autoreTF = new JTextField(20);
                     CatalogueBoundary.getInstance().textBook = new JCheckBox();
+                    JLabel venditore = new JLabel("venditore");
+                    textBook.addItemListener(e -> {
+                        if(e.getStateChange() == ItemEvent.SELECTED) {
+                            venditore.setText("materia");
+                        } else {//checkbox has been deselected
+                            venditore.setText("venditore");
+                        }
+                    });
                     CatalogueBoundary.getInstance().pan.setLayout(new GridBagLayout());
                     gbc = new GridBagConstraints();
 
@@ -311,7 +318,7 @@ public class CatalogueBoundary{
                     gbc.gridy = 2;
                     gbc.anchor = GridBagConstraints.PAGE_START;
                     gbc.insets = new Insets(10, 0, 0, 10);
-                    CatalogueBoundary.getInstance().pan.add(new JLabel("venditore"), gbc);
+                    CatalogueBoundary.getInstance().pan.add(venditore, gbc);
 
                     gbc.gridx = 0;
                     gbc.gridy = 3;

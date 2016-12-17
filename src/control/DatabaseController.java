@@ -34,8 +34,8 @@ abstract class DatabaseController {
             {
                 nuovoArticolo = new Article();
                 nuovoArticolo.setNome(rs.getString("NOME"));
-                nuovoArticolo.setPrezzo(rs.getFloat("PREZZO"));
-                nuovoArticolo.setProprietario(rs.getString("PROPRIETARIO"));
+                //nuovoArticolo.setPrezzo(rs.getFloat("PREZZO"));
+                //nuovoArticolo.setProprietario(rs.getString("PROPRIETARIO"));
                 array.add(nuovoArticolo);
             }
         }
@@ -77,20 +77,35 @@ abstract class DatabaseController {
                         break;
                     case "Clothing":
                         nuovoArticolo = new Clothing();
+                        nuovoArticolo.setNome(rs.getString("NOME"));
+                        nuovoArticolo.setProprietario(rs.getString("PROPRIETARIO"));
+                        nuovoArticolo.setPrezzo(rs.getFloat("PREZZO"));
+                        nuovoArticolo.setQuantità(rs.getInt("QUANTITA"));
                         ((Clothing) nuovoArticolo).setTaglia(rs.getInt("TAGLIA"));
                         ((Clothing) nuovoArticolo).setTipo(rs.getString("TIPO"));
                         ((Clothing) nuovoArticolo).setMarca(rs.getString("MARCA"));
                         break;
                     case "TextBook":
                         nuovoArticolo = new TextBook();
+                        nuovoArticolo.setNome(rs.getString("NOME"));
+                        nuovoArticolo.setProprietario(rs.getString("PROPRIETARIO"));
+                        nuovoArticolo.setPrezzo(rs.getFloat("PREZZO"));
+                        nuovoArticolo.setQuantità(rs.getInt("QUANTITA"));
                         ((TextBook) nuovoArticolo).setEdizione(rs.getInt("EDIZIONE"));
                         ((TextBook) nuovoArticolo).setMateria(rs.getString("MATERIA"));
                         break;
+                    case "generic":
+                        nuovoArticolo = new Article();
+                        nuovoArticolo.setNome(rs.getString("NOME"));
+                        nuovoArticolo.setProprietario(rs.getString("PROPRIETARIO"));
+                        nuovoArticolo.setPrezzo(rs.getFloat("PREZZO"));
+                        nuovoArticolo.setQuantità(rs.getInt("QUANTITA"));
                     default:
                         return null;
                 }
             }
         }
+
         return nuovoArticolo;
     }
 }

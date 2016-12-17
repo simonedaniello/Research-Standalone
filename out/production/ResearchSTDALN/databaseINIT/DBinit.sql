@@ -70,7 +70,7 @@ CREATE TABLE ARTICLES.articolo(
   PROPRIETARIO        VARCHAR
     REFERENCES USERS.UtenteRegistrato(EMAIL),
   PREZZO            FLOAT                ,
-  QUANTITA        VARCHAR                ,
+  QUANTITA        INT                ,
   PRIMARY KEY (NOME, PROPRIETARIO)
 );
 
@@ -166,16 +166,36 @@ INSERT INTO ARTICLES.informatica VALUES ('Notebook', 'simone@gmail.com', 'Lenovo
 INSERT INTO ARTICLES.articolo VALUES ('HP pavilion', 'simone@gmail.com', '800', '10');
 INSERT INTO ARTICLES.informatica VALUES ('Notebook', 'simone@gmail.com', 'HP pavilion', 'HP Tamarro', 'HP');
 
+INSERT INTO ARTICLES.articolo VALUES ('HP pavilion 2', 'simone@gmail.com', '800', '10');
+INSERT INTO ARTICLES.informatica VALUES ('Notebook', 'simone@gmail.com', 'HP pavilion 2', 'HP Tamarro', 'HP');
+
+INSERT INTO ARTICLES.articolo VALUES ('HP pavilion 3', 'simone@gmail.com', '800', '10');
+INSERT INTO ARTICLES.informatica VALUES ('Notebook', 'simone@gmail.com', 'HP pavilion 3', 'HP Tamarro', 'HP');
+
+INSERT INTO ARTICLES.articolo VALUES ('HP pavilion 4', 'simone@gmail.com', '800', '10');
+INSERT INTO ARTICLES.informatica VALUES ('Notebook', 'simone@gmail.com', 'HP pavilion 4', 'HP Tamarro', 'HP');
+
+INSERT INTO ARTICLES.articolo VALUES ('HP pavilion 5', 'simone@gmail.com', '800', '10');
+INSERT INTO ARTICLES.informatica VALUES ('Notebook', 'simone@gmail.com', 'HP pavilion 5', 'HP Tamarro', 'HP');
+
+INSERT INTO ARTICLES.articolo VALUES ('HP pavilion 6', 'simone@gmail.com', '800', '10');
+INSERT INTO ARTICLES.informatica VALUES ('Notebook', 'simone@gmail.com', 'HP pavilion 6', 'HP Tamarro', 'HP');
+
+INSERT INTO ARTICLES.articolo VALUES ('HP pavilion 7', 'simone@gmail.com', '800', '10');
+INSERT INTO ARTICLES.informatica VALUES ('Notebook', 'simone@gmail.com', 'HP pavilion 7', 'HP Tamarro', 'HP');
+
+INSERT INTO ARTICLES.articolo VALUES ('HP pavilion 8', 'simone@gmail.com', '800', '10');
+INSERT INTO ARTICLES.informatica VALUES ('Notebook', 'simone@gmail.com', 'HP pavilion 8', 'HP Tamarro', 'HP');
 
 INSERT INTO ARTICLES.articolo VALUES ('Asus touch', 'simone@gmail.com', '1200', '10');
 INSERT INTO ARTICLES.informatica VALUES ('Notebook', 'simone@gmail.com', 'Asus touch', 'Asus touch', 'Asus');
 
 
-INSERT INTO ARTICLES.articolo VALUES ('gonna lunga', 'simone@gmail.com', '1200', '10');
+INSERT INTO ARTICLES.articolo VALUES ('gonna lunga', 'simone@gmail.com', '12', '10');
 INSERT INTO ARTICLES.Abbigliamento VALUES ('gonna', 'simone@gmail.com', 'gonna lunga', '42', 'Oviesse');
 
 
-INSERT INTO ARTICLES.articolo VALUES ('gonna corta', 'simone@gmail.com', '1200', '10');
+INSERT INTO ARTICLES.articolo VALUES ('gonna corta', 'simone@gmail.com', '12', '10');
 INSERT INTO ARTICLES.Abbigliamento VALUES ('gonna', 'simone@gmail.com', 'gonna corta', '42', 'Oviesse');
 
 

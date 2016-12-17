@@ -20,7 +20,7 @@
     <schema id="6" parent="1" name="public">
       <object-id>2200</object-id>
       <visible>1</visible>
-      <introspection-timestamp>2016-12-16.16:42:41.281</introspection-timestamp>
+      <introspection-timestamp>2016-12-16.19:54:46.168</introspection-timestamp>
     </schema>
     <schema id="7" parent="1" name="pg_catalog">
       <object-id>11</object-id>
@@ -38,10 +38,10 @@
       <object-id>12121</object-id>
     </schema>
     <schema id="12" parent="1" name="users">
-      <object-id>19581</object-id>
+      <object-id>19696</object-id>
     </schema>
     <schema id="13" parent="1" name="articles">
-      <object-id>19629</object-id>
+      <object-id>19744</object-id>
     </schema>
   </database-model>
 </dataSource>
