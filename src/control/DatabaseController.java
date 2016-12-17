@@ -16,7 +16,7 @@ abstract class DatabaseController {
 
     private static Provider provider = new Provider();
 
-    ArrayList<Article> searchArticle(String sql) throws SQLException {
+    ArrayList<Article> searchArticle(String sql, String kind) throws SQLException {
 
         Article nuovoArticolo;
         ArrayList<Article> array = new ArrayList<>();
@@ -28,35 +28,12 @@ abstract class DatabaseController {
             e.printStackTrace();
         }
 
-
         if (rs != null) {
             while(rs.next())
             {
-                nuovoArticolo = new Article();
-                nuovoArticolo.setNome(rs.getString("NOME"));
-                //nuovoArticolo.setPrezzo(rs.getFloat("PREZZO"));
-                //nuovoArticolo.setProprietario(rs.getString("PROPRIETARIO"));
-                array.add(nuovoArticolo);
-            }
-        }
-        return array;
-    }
-
-    Article extendedQuery(String sql, String kind) throws SQLException {
-        ResultSet rs = null;
-        Article nuovoArticolo = null;
-        try {
-            Statement stmt = provider.getConnection().createStatement();
-            rs = stmt.executeQuery(sql);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        if (rs != null) {
-            if(rs.next())
-            {
                 switch (kind) {
                     case "Book":
-                        nuovoArticolo = new Book();
+                        nuovoArticolo = ArticleFactory.getInstance().getBook();
                         nuovoArticolo.setNome(rs.getString("NOME"));
                         nuovoArticolo.setProprietario(rs.getString("PROPRIETARIO"));
                         nuovoArticolo.setPrezzo(rs.getFloat("PREZZO"));
@@ -67,7 +44,7 @@ abstract class DatabaseController {
                         ((Book)nuovoArticolo).setPagine(rs.getInt("PAGINE"));
                         break;
                     case "Electronics":
-                        nuovoArticolo = new Electronics();
+                        nuovoArticolo = ArticleFactory.getInstance().getElectronics();
                         nuovoArticolo.setNome(rs.getString("NOME"));
                         nuovoArticolo.setProprietario(rs.getString("PROPRIETARIO"));
                         nuovoArticolo.setPrezzo(rs.getFloat("PREZZO"));
@@ -76,7 +53,7 @@ abstract class DatabaseController {
                         ((Electronics) nuovoArticolo).setMarca(rs.getString("MARCA"));
                         break;
                     case "Clothing":
-                        nuovoArticolo = new Clothing();
+                        nuovoArticolo = ArticleFactory.getInstance().getClothing();
                         nuovoArticolo.setNome(rs.getString("NOME"));
                         nuovoArticolo.setProprietario(rs.getString("PROPRIETARIO"));
                         nuovoArticolo.setPrezzo(rs.getFloat("PREZZO"));
@@ -86,7 +63,7 @@ abstract class DatabaseController {
                         ((Clothing) nuovoArticolo).setMarca(rs.getString("MARCA"));
                         break;
                     case "TextBook":
-                        nuovoArticolo = new TextBook();
+                        nuovoArticolo = ArticleFactory.getInstance().getTextBook();
                         nuovoArticolo.setNome(rs.getString("NOME"));
                         nuovoArticolo.setProprietario(rs.getString("PROPRIETARIO"));
                         nuovoArticolo.setPrezzo(rs.getFloat("PREZZO"));
@@ -95,7 +72,7 @@ abstract class DatabaseController {
                         ((TextBook) nuovoArticolo).setMateria(rs.getString("MATERIA"));
                         break;
                     case "generic":
-                        nuovoArticolo = new Article();
+                        nuovoArticolo = ArticleFactory.getInstance().getArticle();
                         nuovoArticolo.setNome(rs.getString("NOME"));
                         nuovoArticolo.setProprietario(rs.getString("PROPRIETARIO"));
                         nuovoArticolo.setPrezzo(rs.getFloat("PREZZO"));
@@ -103,9 +80,10 @@ abstract class DatabaseController {
                     default:
                         return null;
                 }
+                array.add(nuovoArticolo);
             }
         }
-
-        return nuovoArticolo;
+        return array;
     }
+
 }

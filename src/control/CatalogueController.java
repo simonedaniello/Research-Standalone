@@ -25,7 +25,6 @@ public class CatalogueController {
         return instance;
     }
 
-
     public  DefaultListModel<String> createCatalogue(String nome,  String proprietario,
                                 String tipoArticolo, String editore, String autore, String titolo,
                                      String tipo, String marca, int taglia, String materia,
@@ -36,107 +35,55 @@ public class CatalogueController {
         switch (tipoArticolo) {
             case "Book":
                 rq = ArticleFactory.getInstance().getBook();
-                if(nome.contains("''"))
-                    rq.setNome("");
-                else
-                    rq.setNome(nome.replace("'", "''"));
-                if(proprietario.contains("''"))
-                    rq.setProprietario("");
-                else
-                    rq.setProprietario(proprietario.replace("'", "''"));
-                if(editore.contains("''"))
-                    ((Book)rq).setEditore("");
-                else
-                    ((Book) rq).setEditore(editore.replace("'", "''"));
-                if(autore.contains("''"))
-                    ((Book)rq).setAutore("");
-                else
-                    ((Book) rq).setAutore(autore.replace("'", "''"));
-                if(titolo.contains("''"))
-                    ((Book)rq).setTitolo("");
-                else
-                    ((Book) rq).setTitolo(titolo.replace("'", "''"));
+
+                rq.setNome(checkString(nome));
+                rq.setProprietario(checkString(proprietario));
+                ((Book)rq).setEditore(checkString(editore));
+                ((Book)rq).setAutore(checkString(autore));
+                ((Book)rq).setTitolo(checkString(titolo));
+
                 break;
             case "Electronics":
                 rq = ArticleFactory.getInstance().getElectronics();
-                if(nome.contains("''"))
-                    rq.setNome("");
-                else
-                    rq.setNome(nome.replace("'", "''"));
-                if(proprietario.contains("''"))
-                    rq.setProprietario("");
-                else
-                    rq.setProprietario(proprietario.replace("'", "''"));
-                if(tipo.contains("''"))
-                    ((Electronics) rq).setTipo("");
-                else
-                    ((Electronics) rq).setTipo(tipo.replace("'", "''"));
-                if(marca.contains("''"))
-                    ((Electronics) rq).setMarca("");
-                else
-                    ((Electronics) rq).setMarca(marca.replace("'", "''"));
-                if(modello.contains("''"))
-                    ((Electronics) rq).setModello("");
-                else
-                    ((Electronics) rq).setModello(modello.replace("'", "''"));
+
+                rq.setNome(checkString(nome));
+                rq.setProprietario(checkString(proprietario));
+                ((Electronics) rq).setTipo(checkString(tipo));
+                ((Electronics) rq).setMarca(checkString(marca));
+                ((Electronics) rq).setModello(checkString(modello));
+
                 break;
             case "Clothing":
                 rq = ArticleFactory.getInstance().getClothing();
-                if(nome.contains("''"))
-                    rq.setNome("");
-                else
-                    rq.setNome(nome.replace("'", "''"));
-                if(proprietario.contains("''"))
-                    rq.setProprietario("");
-                else
-                    rq.setProprietario(proprietario.replace("'", "''"));
-                if(tipo.contains("''"))
-                    ((Clothing) rq).setTipo("");
-                else
-                    ((Clothing) rq).setTipo(tipo.replace("'", "''"));
+
+                rq.setNome(checkString(nome));
+                rq.setProprietario(checkString(proprietario));
+                ((Clothing) rq).setTipo(checkString(tipo));
+                ((Clothing) rq).setMarca(checkString(marca));
                 if(taglia < 0)
                     ((Clothing) rq).setTaglia(0);
                 else
                     ((Clothing) rq).setTaglia(taglia);
-                if(marca.contains("''"))
-                    ((Clothing) rq).setMarca("");
-                else
-                    ((Clothing) rq).setMarca(marca.replace("'", "''"));
+
                 break;
             case "TextBook":
                 rq = ArticleFactory.getInstance().getTextBook();
-                if(nome.contains("''"))
-                    rq.setNome("");
-                else
-                    rq.setNome(nome.replace("'", "''"));
-                if(proprietario.contains("''"))
-                    rq.setProprietario("");
-                else
-                    rq.setProprietario(proprietario.replace("'", "''"));
-                if(editore.contains("''"))
-                    ((Book)rq).setEditore("");
-                else
-                    ((Book) rq).setEditore(editore.replace("'", "''"));
-                if(autore.contains("''"))
-                    ((Book)rq).setAutore("");
-                else
-                    ((Book) rq).setAutore(autore.replace("'", "''"));
-                if(titolo.contains("''"))
-                    ((Book)rq).setTitolo("");
-                else
-                    ((Book) rq).setTitolo(titolo.replace("'", "''"));
-                if(materia.contains("''"))
-                    ((TextBook)rq).setMateria("");
-                else
-                    ((TextBook) rq).setMateria(materia.replace("'", "''"));
+
+                rq.setNome(checkString(nome));
+                rq.setProprietario(checkString(proprietario));
+                ((Book)rq).setEditore(checkString(editore));
+                ((Book)rq).setAutore(checkString(autore));
+                ((Book)rq).setTitolo(checkString(titolo));
+                ((TextBook)rq).setMateria(checkString(materia));
                 if(edizione < 0)
                     ((TextBook)rq).setEdizione(0);
                 else
                     ((TextBook) rq).setEdizione(edizione);
                 break;
+
             case "":
                 rq = ArticleFactory.getInstance().getArticle();
-                rq.setNome(nome.replace("'", "''"));
+                rq.setNome(checkString(nome));
                 break;
         }
 
@@ -147,8 +94,8 @@ public class CatalogueController {
 
         int i = 0;
         while (i<articoli.size()) {
-            JLabel ciao = new JLabel();
-            ciao.setText(articoli.get(i).getNome());
+            JLabel row = new JLabel();
+            row.setText(articoli.get(i).getNome());
             model.addElement(articoli.get(i).getNome());
 
             System.out.println(articoli.get(i).getNome());
@@ -158,175 +105,26 @@ public class CatalogueController {
 
     }
 
-    @SuppressWarnings("Duplicates")
     private ArrayList<Article> getCatalogue(Article rq) throws SQLException {
 
-        String sql = "";
-        int isItTheFirst = 0;
-        if (rq.getClass().equals(Book.class)) {
-
-            sql = "SELECT * FROM ARTICLES.libro WHERE ";
-            if (!((Book) rq).getTitolo().equals("")) {
-                sql = sql + "UPPER(TITOLO) LIKE UPPER('%" + rq.getNome() + "%') ";
-                isItTheFirst++;
-            }
-            if (!rq.getProprietario().equals("")) {
-                if (isItTheFirst != 0) {
-                    sql = sql + "AND ";
-                }
-                sql = sql + "UPPER(PROPRIETARIO) LIKE UPPER('%" + rq.getProprietario() + "%') ";
-                isItTheFirst++;
-            }
-            if (! rq.getNome().equals("")) {
-                if (isItTheFirst != 0) {
-                    sql = sql + "AND ";
-                }
-                sql = sql + "UPPER(NOME) LIKE UPPER('%" + rq.getNome() + "%') ";
-                isItTheFirst++;
-            }
-            if (!((Book) rq).getAutore().equals("")) {
-                if (isItTheFirst != 0) {
-                    sql = sql + "AND ";
-                }
-                sql = sql + "UPPER(AUTORE) LIKE UPPER('%" + ((Book) rq).getAutore() + "%') ";
-                isItTheFirst++;
-            }
-            if (!((Book) rq).getEditore().equals("")) {
-                if (isItTheFirst != 0) {
-                    sql = sql + "AND ";
-                }
-                sql = sql + "UPPER(CASA) LIKE UPPER('%" + ((Book) rq).getEditore() + "%') ";
-            }
-
-
-        } else if (rq.getClass().equals(Clothing.class)) {
-            sql = "SELECT * FROM ARTICLES.Abbigliamento WHERE ";
-            if (!((Clothing) rq).getTipo().equals("")) {
-                sql = sql + "UPPER(TIPO) LIKE UPPER('%" + ((Clothing) rq).getTipo() + "%') ";
-                isItTheFirst++;
-            }
-            if (!rq.getProprietario().equals("")) {
-                if (isItTheFirst != 0) {
-                    sql = sql + "AND ";
-                }
-                sql = sql + "UPPER(PROPRIETARIO) LIKE UPPER('%" + rq.getProprietario() + "%') ";
-                isItTheFirst++;
-            }
-            if (!rq.getNome().equals("")) {
-                if (isItTheFirst != 0) {
-                    sql = sql + "AND ";
-                }
-                sql = sql + "UPPER(NOME) LIKE UPPER('%" + rq.getNome() + "%') ";
-                isItTheFirst++;
-            }
-            if (((Clothing) rq).getTaglia() != 0) {
-                if (isItTheFirst != 0) {
-                    sql = sql + "AND ";
-                }
-                sql = sql + "TAGLIA ='" + ((Clothing) rq).getTaglia() + "' ";
-                isItTheFirst++;
-            }
-            if (!((Clothing) rq).getMarca().equals("")) {
-                if (isItTheFirst != 0) {
-                    sql = sql + "AND ";
-                }
-                sql = sql + "UPPER(MARCA) LIKE UPPER('%" + ((Clothing) rq).getMarca()+ "%') ";
-            }
-
-        } else if (rq.getClass().equals(Electronics.class)) {
-            sql = "SELECT * FROM ARTICLES.informatica WHERE ";
-            System.out.println(((Electronics) rq).getModello());
-            if (!((Electronics) rq).getTipo().equals("")) {
-                sql = sql + "UPPER(TIPO) LIKE UPPER('%" + ((Electronics) rq).getTipo() + "%') ";
-                isItTheFirst++;
-            }
-            if (!rq.getProprietario().equals("")) {
-                if (isItTheFirst != 0) {
-                    sql = sql + "AND ";
-                }
-                sql = sql + "UPPER(PROPRIETARIO) LIKE UPPER('%" + rq.getProprietario() + "%') ";
-                isItTheFirst++;
-            }
-            if (!rq.getNome().equals("")) {
-                if (isItTheFirst != 0) {
-                    sql = sql + "AND ";
-                }
-                sql = sql + "UPPER(NOME) LIKE UPPER('%" + rq.getNome() + "%') ";
-                isItTheFirst++;
-            }
-            if (!((Electronics) rq).getModello().equals("")) {
-                if (isItTheFirst != 0) {
-                    sql = sql + "AND ";
-                }
-                sql = sql + "UPPER(MODELLO) LIKE UPPER('%" + ((Electronics) rq).getModello() + "%') ";
-                isItTheFirst++;
-            }
-            if (!((Electronics) rq).getMarca().equals("")) {
-                if (isItTheFirst != 0) {
-                    sql = sql + "AND ";
-                }
-                sql = sql + "UPPER(MARCA) LIKE UPPER('%" + ((Electronics) rq).getMarca() + "%') ";
-            }
-
-        } else if (rq.getClass().equals(TextBook.class)) {
-            sql = "SELECT * FROM ARTICLES.Scolastico WHERE ";
-            if (!((TextBook) rq).getMateria().equals("")) {
-                sql = sql + "UPPER(MATERIA) LIKE UPPER('%" + ((TextBook) rq).getMateria()+ "%') ";
-                isItTheFirst++;
-            }
-            if (!rq.getProprietario().equals("")) {
-                if (isItTheFirst != 0) {
-                    sql = sql + "AND ";
-                }
-                sql = sql + "UPPER(PROPRIETARIO) LIKE UPPER('%" + rq.getProprietario()+ "%') ";
-                isItTheFirst++;
-            }
-            if (!rq.getNome().equals("")) {
-                if (isItTheFirst != 0) {
-                    sql = sql + "AND ";
-                }
-                sql = sql + "UPPER(NOME) LIKE UPPER('%" + rq.getNome() + "%') ";
-                isItTheFirst++;
-            }
-            if (((TextBook) rq).getEdizione() != 0) {
-                if (isItTheFirst != 0) {
-                    sql = sql + "AND ";
-                }
-                sql = sql + "EDIZIONE ='" + ((TextBook) rq).getEdizione() + "' ";
-            }
-
-
-        } else if (rq.getClass().equals(Article.class)) {
-            sql = "SELECT * FROM ARTICLES.articolo WHERE UPPER(NOME) LIKE UPPER('%" + rq.getNome() + "%') ";
-        }
+        String sql = sqlCreator(rq);
         ArrayList<Article> articoli;
-        if(     sql.equals("SELECT * FROM ARTICLES.libro WHERE ") ||
-                sql.equals("SELECT * FROM ARTICLES.Abbigliamento WHERE ") ||
-                sql.equals("SELECT * FROM ARTICLES.informatica WHERE ") ||
-                sql.equals("SELECT * FROM ARTICLES.Scolastico WHERE ")){
+        if(!sqlCheck(sql)){
             articoli = new ArrayList<>();
             return articoli;
         }
         System.out.println(sql);
-        articoli =  UserDatabase.getInstance().searchArticle(sql);
-        for (int i = 0; i < articoli.size(); i++) {
-            if (rq.getClass().equals(Book.class)) {
-                sql = "SELECT * FROM ARTICLES.libro, ARTICLES.articolo WHERE UPPER(ARTICLES.libro.NOME) LIKE UPPER('" + articoli.get(i).getNome().replace("'", "''") + "') AND UPPER(ARTICLES.libro.NOME) = UPPER(ARTICLES.articolo.NOME)";
-                articoli.set(i, UserDatabase.getInstance().extendedQuery(sql, "Book"));
-            } else if (rq.getClass().equals(Electronics.class)) {
-                sql = "SELECT * FROM ARTICLES.informatica , ARTICLES.articolo WHERE UPPER(ARTICLES.informatica.NOME) LIKE UPPER('" + articoli.get(i).getNome().replace("'", "''")  + "') AND UPPER(ARTICLES.informatica.NOME) = UPPER(ARTICLES.articolo.NOME)";
-                articoli.set(i, UserDatabase.getInstance().extendedQuery(sql, "Electronics"));
-            } else if (rq.getClass().equals(Clothing.class)) {
-                sql = "SELECT * FROM ARTICLES.Abbigliamento, ARTICLES.articolo WHERE UPPER(ARTICLES.Abbigliamento.NOME) LIKE UPPER('" + articoli.get(i).getNome().replace("'", "''")  + "') AND UPPER(ARTICLES.Abbigliamento.NOME) = UPPER(ARTICLES.articolo.NOME)";
-                articoli.set(i, UserDatabase.getInstance().extendedQuery(sql, "Clothing"));
-            } else if (rq.getClass().equals(TextBook.class)) {
-                sql = "SELECT * FROM ARTICLES.Scolastico, ARTICLES.articolo WHERE UPPER(ARTICLES.Scolastico.NOME) LIKE UPPER('" + articoli.get(i).getNome().replace("'", "''")  + "') AND UPPER(ARTICLES.Scolastico.NOME) = UPPER(ARTICLES.articolo.NOME)";
-                articoli.set(i, UserDatabase.getInstance().extendedQuery(sql, "TextBook"));
-            }
-            else {
-                sql = "SELECT * FROM ARTICLES.articolo WHERE UPPER(NOME) LIKE UPPER('" + articoli.get(i).getNome()+ "')";
-                articoli.set(i, UserDatabase.getInstance().extendedQuery(sql, "generic"));
-            }
+        if (rq.getClass().equals(Book.class)) {
+            articoli = UserDatabase.getInstance().searchArticle(sql, "Book");
+        } else if (rq.getClass().equals(Electronics.class)) {
+            articoli = UserDatabase.getInstance().searchArticle(sql, "Electronics");
+        } else if (rq.getClass().equals(Clothing.class)) {
+            articoli = UserDatabase.getInstance().searchArticle(sql, "Clothing");
+        } else if (rq.getClass().equals(TextBook.class)) {
+            articoli = UserDatabase.getInstance().searchArticle(sql, "TextBook");
+        }
+        else {
+            articoli = UserDatabase.getInstance().searchArticle(sql, "generic");
         }
 
         if (articoli.size() != 0){
@@ -334,63 +132,11 @@ public class CatalogueController {
         }
         else{
             if(!rq.getNome().equals("")){
-                ArrayList<Article> articoliVicini = new ArrayList<>();
-                sql = "SELECT * FROM ARTICLES.articolo";
-                articoli = UserDatabase.getInstance().searchArticle(sql);
-                if(articoli.size() != 0){
-                    for (Article a : articoli) {
-                        if (levenshtein(a.getNome(), rq.getNome()) < 4) {
-                            articoliVicini.add(a);
-                        }
-                    }
-                    return articoliVicini;
-                }
-                else
-                    return articoli;
+                return levenshteinCheck(rq.getNome());
             }
             else
                 return articoli;
         }
-    }
-
-    private int levenshtein (CharSequence stringa1, CharSequence stringa2) {
-        int len0 = stringa1.length() + 1;
-        int len1 = stringa2.length() + 1;
-
-        // array di distanze
-        int[] valore1 = new int[len0];
-        int[] valore2 = new int[len0];
-
-        // initial cost of skipping prefix in String s0
-        for (int i = 0; i < len0; i++) valore1[i] = i;
-
-        // dynamically computing the array of distances
-
-        // transformation cost for each letter in s1
-        for (int j = 1; j < len1; j++) {
-            // initial cost of skipping prefix in String s1
-            valore2[0] = j;
-
-            // transformation cost for each letter in s0
-            for(int i = 1; i < len0; i++) {
-                // matching current letters in both strings
-                int match = (stringa1.charAt(i - 1) == stringa2.charAt(j - 1)) ? 0 : 1;
-
-                // computing cost for each transformation
-                int cost_replace = valore1[i - 1] + match;
-                int cost_insert  = valore1[i] + 1;
-                int cost_delete  = valore2[i - 1] + 1;
-
-                // keep minimum cost
-                valore2[i] = Math.min(Math.min(cost_insert, cost_delete), cost_replace);
-            }
-
-            // swap cost/newcost arrays
-            int[] swap = valore1; valore1 = valore2; valore2 = swap;
-        }
-
-        // the distance is the cost for transforming all letters in both strings
-        return valore1[len0 - 1];
     }
 
     public DefaultListModel<String> getArticleByPrice(int price, DefaultListModel<String> model) {
@@ -405,4 +151,179 @@ public class CatalogueController {
         }
         return model;
     }
+
+    private String checkString(String string) {
+        String s;
+        if(string.contains("''")){
+            s = "";
+            return s;
+        }
+        else
+            return string.replace("'", "''");
+    }
+
+    private String sqlCreator(Article rq){
+        int proprietario = 0;
+        String sql = "";
+        int isItTheFirst = 0;
+        if (rq.getClass().equals(Book.class)) {
+
+            sql = "SELECT * FROM ARTICLES.libro, ARTICLES.articolo WHERE ARTICLES.libro.NOME = ARTICLES.articolo.NOME AND ARTICLES.libro.PROPRIETARIO = ARTICLES.articolo.PROPRIETARIO AND ";
+            if (!((Book) rq).getTitolo().equals("")) {
+                sql = sql + "UPPER(TITOLO) LIKE UPPER('%" + rq.getNome() + "%') ";
+                isItTheFirst++;
+            }
+            if (!((Book) rq).getAutore().equals("")) {
+                if (isItTheFirst != 0) {
+                    sql = sql + "AND ";
+                }
+                sql = sql + "UPPER(AUTORE) LIKE UPPER('%" + ((Book) rq).getAutore() + "%') ";
+                isItTheFirst++;
+            }
+            if (!((Book) rq).getEditore().equals("")) {
+                if (isItTheFirst != 0) {
+                    sql = sql + "AND ";
+                }
+                sql = sql + "UPPER(CASA) LIKE UPPER('%" + ((Book) rq).getEditore() + "%') ";
+                isItTheFirst++;
+            }
+            proprietario++;
+
+
+        } else if (rq.getClass().equals(Clothing.class)) {
+            sql = "SELECT * FROM ARTICLES.Abbigliamento, ARTICLES.articolo WHERE ARTICLES.Abbigliamento.NOME = ARTICLES.articolo.NOME AND ARTICLES.Abbigliamento.PROPRIETARIO = ARTICLES.articolo.PROPRIETARIO AND ";
+            if (!((Clothing) rq).getTipo().equals("")) {
+                sql = sql + "UPPER(TIPO) LIKE UPPER('%" + ((Clothing) rq).getTipo() + "%') ";
+                isItTheFirst++;
+            }
+            if (((Clothing) rq).getTaglia() != 0) {
+                if (isItTheFirst != 0) {
+                    sql = sql + "AND ";
+                }
+                sql = sql + "TAGLIA ='" + ((Clothing) rq).getTaglia() + "' ";
+                isItTheFirst++;
+            }
+            if (!((Clothing) rq).getMarca().equals("")) {
+                if (isItTheFirst != 0) {
+                    sql = sql + "AND ";
+                }
+                sql = sql + "UPPER(MARCA) LIKE UPPER('%" + ((Clothing) rq).getMarca()+ "%') ";
+                isItTheFirst++;
+            }
+            proprietario++;
+
+        } else if (rq.getClass().equals(Electronics.class)) {
+            sql = "SELECT * FROM ARTICLES.informatica, ARTICLES.articolo WHERE ARTICLES.informatica.NOME = ARTICLES.articolo.NOME AND ARTICLES.informatica.PROPRIETARIO = ARTICLES.articolo.PROPRIETARIO AND ";
+            System.out.println(((Electronics) rq).getModello());
+            if (!((Electronics) rq).getTipo().equals("")) {
+                sql = sql + "UPPER(TIPO) LIKE UPPER('%" + ((Electronics) rq).getTipo() + "%') ";
+                isItTheFirst++;
+            }
+            if (!((Electronics) rq).getModello().equals("")) {
+                if (isItTheFirst != 0) {
+                    sql = sql + "AND ";
+                }
+                sql = sql + "UPPER(MODELLO) LIKE UPPER('%" + ((Electronics) rq).getModello() + "%') ";
+                isItTheFirst++;
+            }
+            if (!((Electronics) rq).getMarca().equals("")) {
+                if (isItTheFirst != 0) {
+                    sql = sql + "AND ";
+                }
+                sql = sql + "UPPER(MARCA) LIKE UPPER('%" + ((Electronics) rq).getMarca() + "%') ";
+                isItTheFirst++;
+            }
+            proprietario++;
+
+        } else if (rq.getClass().equals(TextBook.class)) {
+            sql = "SELECT * FROM ARTICLES.Scolastico, ARTICLES.articolo WHERE ARTICLES.Scolastico.NOME = ARTICLES.articolo.NOME AND ARTICLES.Scolastico.PROPRIETARIO = ARTICLES.articolo.PROPRIETARIO AND ";
+            if (!((TextBook) rq).getMateria().equals("")) {
+                sql = sql + "UPPER(MATERIA) LIKE UPPER('%" + ((TextBook) rq).getMateria()+ "%') ";
+                isItTheFirst++;
+            }
+
+            if (((TextBook) rq).getEdizione() != 0) {
+                if (isItTheFirst != 0) {
+                    sql = sql + "AND ";
+                }
+                sql = sql + "EDIZIONE ='" + ((TextBook) rq).getEdizione() + "' ";
+                isItTheFirst++;
+            }
+            proprietario++;
+
+        } else if (rq.getClass().equals(Article.class)) {
+            sql = "SELECT * FROM ARTICLES.articolo WHERE UPPER(NOME) LIKE UPPER('%" + rq.getNome() + "%') ";
+        }
+
+
+        if (proprietario == 1){
+            if (!rq.getProprietario().equals("")) {
+                if (isItTheFirst != 0) {
+                    sql = sql + "AND ";
+                }
+                sql = sql + "UPPER(PROPRIETARIO) LIKE UPPER('%" + rq.getProprietario()+ "%') ";
+                isItTheFirst++;
+            }
+            if (!rq.getNome().equals("")) {
+                if (isItTheFirst != 0) {
+                    sql = sql + "AND ";
+                }
+                sql = sql + "UPPER(NOME) LIKE UPPER('%" + rq.getNome() + "%') ";
+            }
+        }
+        return sql;
+    }
+
+    private boolean sqlCheck(String sql){
+        return !(sql.equals("SELECT * FROM ARTICLES.libro, ARTICLES.articolo WHERE ARTICLES.libro.NOME = ARTICLES.articolo.NOME AND ARTICLES.libro.PROPRIETARIO = ARTICLES.articolo.PROPRIETARIO AND ") ||
+                sql.equals("SELECT * FROM ARTICLES.Abbigliamento, ARTICLES.articolo WHERE ARTICLES.Abbigliamento.NOME = ARTICLES.articolo.NOME AND ARTICLES.Abbigliamento.PROPRIETARIO = ARTICLES.articolo.PROPRIETARIO AND ") ||
+                sql.equals("SELECT * FROM ARTICLES.informatica, ARTICLES.articolo WHERE ARTICLES.informatica.NOME = ARTICLES.articolo.NOME AND ARTICLES.informatica.PROPRIETARIO = ARTICLES.articolo.PROPRIETARIO AND ") ||
+                sql.equals("SELECT * FROM ARTICLES.Scolastico, ARTICLES.articolo WHERE ARTICLES.Scolastico.NOME = ARTICLES.articolo.NOME AND ARTICLES.Scolastico.PROPRIETARIO = ARTICLES.articolo.PROPRIETARIO AND "));
+    }
+
+    private int levenshtein (CharSequence stringa1, CharSequence stringa2) {
+        int len0 = stringa1.length() + 1;
+        int len1 = stringa2.length() + 1;
+
+        // array di distanze
+        int[] valore1 = new int[len0];
+        int[] valore2 = new int[len0];
+
+        for (int i = 0; i < len0; i++) valore1[i] = i;
+
+        for (int j = 1; j < len1; j++) {
+            valore2[0] = j;
+
+            for(int i = 1; i < len0; i++) {
+                int match = (stringa1.charAt(i - 1) == stringa2.charAt(j - 1)) ? 0 : 1;
+
+                int cost_replace = valore1[i - 1] + match;
+                int cost_insert  = valore1[i] + 1;
+                int cost_delete  = valore2[i - 1] + 1;
+
+                valore2[i] = Math.min(Math.min(cost_insert, cost_delete), cost_replace);
+            }
+
+            int[] swap = valore1; valore1 = valore2; valore2 = swap;
+        }
+
+        return valore1[len0 - 1];
+    }
+
+    private ArrayList<Article> levenshteinCheck(String nome) throws SQLException {
+        ArrayList<Article> articoliVicini = new ArrayList<>();
+        String sql = "SELECT * FROM ARTICLES.articolo";
+        articoli = UserDatabase.getInstance().searchArticle(sql, "generic");
+        if(articoli.size() != 0){
+            for (Article a : articoli) {
+                if (levenshtein(a.getNome(), nome) < 4) {
+                    articoliVicini.add(a);
+                }
+            }
+            return articoliVicini;
+        }
+        else
+            return articoli;
+    }
+
 }
