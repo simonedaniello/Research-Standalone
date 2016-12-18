@@ -26,22 +26,17 @@ public class Provider {
         Connection conn = null;
         try {
 
-//			System.out.println(this.DB_URL);
-//			System.out.println(this.USER);
-//			System.out.println(this.PASS);
-
             Class.forName(this.JDBC_DRIVER);
             conn = DriverManager.getConnection(this.DB_URL, this.USER, this.PASS);
 
         } catch(Exception e){
-            //Handle errors for Class.forName
             e.printStackTrace();
-            System.out.println("errore boh");
         }
         return conn;
     }
 
 
+/*non utilizzato ma potrebbe risultare utile in futuro*/
 
     public ResultSet getStatement(String SQL, Connection conn)
     {
@@ -59,13 +54,11 @@ public class Provider {
             }
 
         }catch(SQLException se){
-            //Handle errors for JDBC
             rs = null;
             se.printStackTrace();
         }catch(Exception e){
-            //Handle errors for Class.forName
             e.printStackTrace();
-            rs = null;;
+            rs = null;
         }
 
         return rs;
