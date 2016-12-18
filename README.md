@@ -1,6 +1,6 @@
 # researchISPW
 
-ResearchSTDALN was developed for the exam "Software Engineering and Web Application".
+ResearchISPW was developed for the exam "Software Engineering and Web Application".
 This standalone represents a part of an e-commerce web application, showing how research works.
 
 ## Prerequisites
