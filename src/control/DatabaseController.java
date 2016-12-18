@@ -16,12 +16,12 @@ abstract class DatabaseController {
 
     private static Provider provider = new Provider();
 
-    /*
-    * Effettua la query al database e ritorna unArrayList di articoli, settandoli
-    * con le informazioni idonee al tipo di articolo
-    *
-    * Invocata da : getCatalogue(), CatalogueController
-    * */
+    /*-------------------------------------------------------------------------------------------------------
+    * Effettua la query al database e ritorna unArrayList di articoli, settandoli                           |
+    * con le informazioni idonee al tipo di articolo                                                        |
+    *                                                                                                       |
+    * Invocata da : getCatalogue(), CatalogueController                                                     |
+    * ------------------------------------------------------------------------------------------------------*/
     ArrayList<Article> searchArticle(String sql, String kind) throws SQLException {
 
         Article nuovoArticolo;
