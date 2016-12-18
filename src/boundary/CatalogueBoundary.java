@@ -263,7 +263,6 @@ public class CatalogueBoundary{
         }
     }
 
-
     /* Implementazione dei metodi delle esecuzioni dei JButton*/
     private class Actions implements ActionListener {
         private int azione;
@@ -609,11 +608,4 @@ public class CatalogueBoundary{
         }
     }
 
-    /* Controllo del timer*/
-    private class TimerActionListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            System.out.println("errore");
-        }
-    }
 }

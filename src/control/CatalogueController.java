@@ -122,8 +122,7 @@ public class CatalogueController {
             articoli = UserDatabase.getInstance().searchArticle(sql, "Clothing");
         } else if (rq.getClass().equals(TextBook.class)) {
             articoli = UserDatabase.getInstance().searchArticle(sql, "TextBook");
-        }
-        else {
+        } else {
             articoli = UserDatabase.getInstance().searchArticle(sql, "generic");
         }
 
@@ -140,16 +139,18 @@ public class CatalogueController {
     }
 
     public DefaultListModel<String> getArticleByPrice(int price, DefaultListModel<String> model) {
-        model.removeAllElements();
-        for (Article a : articoli) {
-            if (a.getPrezzo() < price) {
-                model.addElement(a.getNome());
-                System.out.println("rimasto : " + a.getNome() + " con prezzo : " + a.getPrezzo());
+        if (articoli.size() != 0) {
+            model.removeAllElements();
+            for (Article a : articoli) {
+                if (a.getPrezzo() < price) {
+                    model.addElement(a.getNome());
+                    System.out.println("rimasto : " + a.getNome() + " con prezzo : " + a.getPrezzo());
+                } else
+                    System.out.println("eliminato : " + a.getNome() + " con prezzo : " + a.getPrezzo());
             }
-            else
-                System.out.println("eliminato : " + a.getNome() + " con prezzo : " + a.getPrezzo());
+            return model;
         }
-        return model;
+        else return model;
     }
 
     private String checkString(String string) {
@@ -164,7 +165,7 @@ public class CatalogueController {
 
     private String sqlCreator(Article rq){
         int proprietario = 0;
-        String sql = "";
+        String sql;
         int isItTheFirst = 0;
         if (rq.getClass().equals(Book.class)) {
 
@@ -251,8 +252,8 @@ public class CatalogueController {
             }
             proprietario++;
 
-        } else if (rq.getClass().equals(Article.class)) {
-            sql = "SELECT * FROM ARTICLES.articolo WHERE UPPER(NOME) LIKE UPPER('%" + rq.getNome() + "%') ";
+        } else {
+            sql = "SELECT * FROM ARTICLES.articolo WHERE UPPER(articolo.NOME) LIKE UPPER('%" + rq.getNome() + "%') ";
         }
 
 
@@ -261,7 +262,7 @@ public class CatalogueController {
                 if (isItTheFirst != 0) {
                     sql = sql + "AND ";
                 }
-                sql = sql + "UPPER(PROPRIETARIO) LIKE UPPER('%" + rq.getProprietario()+ "%') ";
+                sql = sql + "UPPER(articolo.PROPRIETARIO) LIKE UPPER('%" + rq.getProprietario()+ "%') ";
                 isItTheFirst++;
             }
             if (!rq.getNome().equals("")) {

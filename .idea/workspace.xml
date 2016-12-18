@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="457423e3-0dfd-4909-992e-738942799c5d" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ResearchSTDALN/boundary/CatalogueBoundary.class" afterPath="$PROJECT_DIR$/out/production/ResearchSTDALN/boundary/CatalogueBoundary.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ResearchSTDALN/control/CatalogueController.class" afterPath="$PROJECT_DIR$/out/production/ResearchSTDALN/control/CatalogueController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ResearchSTDALN/control/DatabaseController.class" afterPath="$PROJECT_DIR$/out/production/ResearchSTDALN/control/DatabaseController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/boundary/CatalogueBoundary.java" afterPath="$PROJECT_DIR$/src/boundary/CatalogueBoundary.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/CatalogueController.java" afterPath="$PROJECT_DIR$/src/control/CatalogueController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/DatabaseController.java" afterPath="$PROJECT_DIR$/src/control/DatabaseController.java" />
     </list>
@@ -43,32 +47,35 @@
       <file leaf-file-name="CatalogueBoundary.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/boundary/CatalogueBoundary.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="267" column="52" selection-start-line="267" selection-start-column="52" selection-end-line="267" selection-end-column="52" />
+            <state relative-caret-position="900">
+              <caret line="610" column="0" selection-start-line="610" selection-start-column="0" selection-end-line="610" selection-end-column="0" />
               <folding>
+                <element signature="imports" expanded="false" />
                 <element signature="docComment;class#CatalogueBoundary#0" expanded="false" />
                 <element signature="method#CatalogueBoundary#0;class#CatalogueBoundary#0" expanded="false" />
                 <element signature="e#1827#1844#0" expanded="false" />
+                <element signature="e#6746#6747#0" expanded="false" />
+                <element signature="e#6777#6778#0" expanded="false" />
                 <element signature="method#research#0;class#CatalogueBoundary#0" expanded="false" />
                 <element signature="class#Actions#0;class#CatalogueBoundary#0" expanded="false" />
+                <element signature="e#9827#9828#0" expanded="false" />
+                <element signature="e#9871#9872#0" expanded="false" />
                 <element signature="method#actionPerformed#0;class#Actions#0;class#CatalogueBoundary#0" expanded="false" />
-                <element signature="class#TimerActionListener#0;class#CatalogueBoundary#0" expanded="false" />
-                <marker date="1481910608469" expanded="false" signature="5637:5881" ph="//..." />
+                <marker date="1481996786491" expanded="false" signature="5637:5881" ph="//..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CatalogueController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CatalogueController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/control/CatalogueController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state relative-caret-position="252">
+              <caret line="127" column="0" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
               <folding>
                 <element signature="docComment;class#CatalogueController#0" expanded="false" />
                 <element signature="method#CatalogueController#0;class#CatalogueController#0" expanded="false" />
                 <element signature="method#createCatalogue#0;class#CatalogueController#0" expanded="false" />
-                <element signature="method#getCatalogue#0;class#CatalogueController#0" expanded="false" />
                 <element signature="method#getArticleByPrice#0;class#CatalogueController#0" expanded="false" />
                 <element signature="method#checkString#0;class#CatalogueController#0" expanded="false" />
                 <element signature="method#sqlCreator#0;class#CatalogueController#0" expanded="false" />
@@ -80,14 +87,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatabaseController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DatabaseController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/control/DatabaseController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="18" column="82" selection-start-line="18" selection-start-column="82" selection-end-line="18" selection-end-column="82" />
+            <state relative-caret-position="1422">
+              <caret line="87" column="5" selection-start-line="87" selection-start-column="5" selection-end-line="87" selection-end-column="5" />
               <folding>
                 <element signature="docComment;class#DatabaseController#0" expanded="false" />
-                <element signature="method#searchArticle#0;class#DatabaseController#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -96,8 +102,8 @@
       <file leaf-file-name="DBinit.sql" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/databaseINIT/DBinit.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-252">
-              <caret line="73" column="33" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="33" />
+            <state relative-caret-position="1188">
+              <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -141,10 +147,10 @@
         <option value="$PROJECT_DIR$/src/control/ArticleFactory.java" />
         <option value="$PROJECT_DIR$/src/boundary/Listeners.java" />
         <option value="$PROJECT_DIR$/src/control/UserDatabase.java" />
-        <option value="$PROJECT_DIR$/src/boundary/CatalogueBoundary.java" />
         <option value="$PROJECT_DIR$/src/databaseINIT/DBinit.sql" />
-        <option value="$PROJECT_DIR$/src/control/DatabaseController.java" />
+        <option value="$PROJECT_DIR$/src/boundary/CatalogueBoundary.java" />
         <option value="$PROJECT_DIR$/src/control/CatalogueController.java" />
+        <option value="$PROJECT_DIR$/src/control/DatabaseController.java" />
       </list>
     </option>
   </component>
@@ -185,8 +191,8 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -890,7 +896,9 @@
       <workItem from="1481901477121" duration="3414000" />
       <workItem from="1481909152788" duration="4365000" />
       <workItem from="1481914968313" duration="368000" />
-      <workItem from="1481978983873" duration="8509000" />
+      <workItem from="1481978983873" duration="8547000" />
+      <workItem from="1481996691668" duration="3702000" />
+      <workItem from="1482053815330" duration="525000" />
     </task>
     <task id="LOCAL-00001" summary="Listeners adjustement">
       <created>1480873309362</created>
@@ -990,11 +998,18 @@
       <option name="project" value="LOCAL" />
       <updated>1481980343429</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="function division">
+      <created>1481988020854</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1481988020854</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="116223000" />
+    <option name="totallyTimeSpent" value="120488000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="336" width="1366" height="744" extended-state="6" />
@@ -1009,11 +1024,11 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2600897" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2600897" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1727672" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13836017" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1084,7 +1099,8 @@
     <MESSAGE value="finished project" />
     <MESSAGE value="version 1.1 started" />
     <MESSAGE value="1.1 fixed control on immissions" />
-    <option name="LAST_COMMIT_MESSAGE" value="1.1 fixed control on immissions" />
+    <MESSAGE value="function division" />
+    <option name="LAST_COMMIT_MESSAGE" value="function division" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1110,7 +1126,6 @@
           <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
           <folding>
             <element signature="docComment;class#DatabaseController#0" expanded="false" />
-            <element signature="method#searchArticle#0;class#DatabaseController#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1159,14 +1174,18 @@
         <state relative-caret-position="7362">
           <caret line="414" column="67" selection-start-line="414" selection-start-column="67" selection-end-line="414" selection-end-column="67" />
           <folding>
+            <element signature="imports" expanded="false" />
             <element signature="docComment;class#CatalogueBoundary#0" expanded="false" />
             <element signature="method#CatalogueBoundary#0;class#CatalogueBoundary#0" expanded="false" />
             <element signature="e#1827#1844#0" expanded="false" />
+            <element signature="e#6746#6747#0" expanded="false" />
+            <element signature="e#6777#6778#0" expanded="false" />
             <element signature="method#research#0;class#CatalogueBoundary#0" expanded="false" />
             <element signature="class#Actions#0;class#CatalogueBoundary#0" expanded="false" />
+            <element signature="e#9827#9828#0" expanded="false" />
+            <element signature="e#9871#9872#0" expanded="false" />
             <element signature="method#actionPerformed#0;class#Actions#0;class#CatalogueBoundary#0" expanded="false" />
-            <element signature="class#TimerActionListener#0;class#CatalogueBoundary#0" expanded="false" />
-            <marker date="1481910608469" expanded="false" signature="5637:5881" ph="//..." />
+            <marker date="1481996786491" expanded="false" signature="5637:5881" ph="//..." />
           </folding>
         </state>
       </provider>
@@ -1192,7 +1211,6 @@
           <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
           <folding>
             <element signature="docComment;class#DatabaseController#0" expanded="false" />
-            <element signature="method#searchArticle#0;class#DatabaseController#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1223,7 +1241,6 @@
             <element signature="docComment;class#CatalogueController#0" expanded="false" />
             <element signature="method#CatalogueController#0;class#CatalogueController#0" expanded="false" />
             <element signature="method#createCatalogue#0;class#CatalogueController#0" expanded="false" />
-            <element signature="method#getCatalogue#0;class#CatalogueController#0" expanded="false" />
             <element signature="method#getArticleByPrice#0;class#CatalogueController#0" expanded="false" />
             <element signature="method#checkString#0;class#CatalogueController#0" expanded="false" />
             <element signature="method#sqlCreator#0;class#CatalogueController#0" expanded="false" />
@@ -1239,14 +1256,18 @@
         <state relative-caret-position="5508">
           <caret line="309" column="26" selection-start-line="309" selection-start-column="26" selection-end-line="309" selection-end-column="26" />
           <folding>
+            <element signature="imports" expanded="false" />
             <element signature="docComment;class#CatalogueBoundary#0" expanded="false" />
             <element signature="method#CatalogueBoundary#0;class#CatalogueBoundary#0" expanded="false" />
             <element signature="e#1827#1844#0" expanded="false" />
+            <element signature="e#6746#6747#0" expanded="false" />
+            <element signature="e#6777#6778#0" expanded="false" />
             <element signature="method#research#0;class#CatalogueBoundary#0" expanded="false" />
             <element signature="class#Actions#0;class#CatalogueBoundary#0" expanded="false" />
+            <element signature="e#9827#9828#0" expanded="false" />
+            <element signature="e#9871#9872#0" expanded="false" />
             <element signature="method#actionPerformed#0;class#Actions#0;class#CatalogueBoundary#0" expanded="false" />
-            <element signature="class#TimerActionListener#0;class#CatalogueBoundary#0" expanded="false" />
-            <marker date="1481910608469" expanded="false" signature="5637:5881" ph="//..." />
+            <marker date="1481996786491" expanded="false" signature="5637:5881" ph="//..." />
           </folding>
         </state>
       </provider>
@@ -1264,7 +1285,6 @@
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#DatabaseController#0" expanded="false" />
-            <element signature="method#searchArticle#0;class#DatabaseController#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1295,7 +1315,6 @@
             <element signature="docComment;class#CatalogueController#0" expanded="false" />
             <element signature="method#CatalogueController#0;class#CatalogueController#0" expanded="false" />
             <element signature="method#createCatalogue#0;class#CatalogueController#0" expanded="false" />
-            <element signature="method#getCatalogue#0;class#CatalogueController#0" expanded="false" />
             <element signature="method#getArticleByPrice#0;class#CatalogueController#0" expanded="false" />
             <element signature="method#checkString#0;class#CatalogueController#0" expanded="false" />
             <element signature="method#sqlCreator#0;class#CatalogueController#0" expanded="false" />
@@ -1311,14 +1330,18 @@
         <state relative-caret-position="684">
           <caret line="46" column="76" selection-start-line="46" selection-start-column="76" selection-end-line="46" selection-end-column="76" />
           <folding>
+            <element signature="imports" expanded="false" />
             <element signature="docComment;class#CatalogueBoundary#0" expanded="false" />
             <element signature="method#CatalogueBoundary#0;class#CatalogueBoundary#0" expanded="false" />
             <element signature="e#1827#1844#0" expanded="false" />
+            <element signature="e#6746#6747#0" expanded="false" />
+            <element signature="e#6777#6778#0" expanded="false" />
             <element signature="method#research#0;class#CatalogueBoundary#0" expanded="false" />
             <element signature="class#Actions#0;class#CatalogueBoundary#0" expanded="false" />
+            <element signature="e#9827#9828#0" expanded="false" />
+            <element signature="e#9871#9872#0" expanded="false" />
             <element signature="method#actionPerformed#0;class#Actions#0;class#CatalogueBoundary#0" expanded="false" />
-            <element signature="class#TimerActionListener#0;class#CatalogueBoundary#0" expanded="false" />
-            <marker date="1481910608469" expanded="false" signature="5637:5881" ph="//..." />
+            <marker date="1481996786491" expanded="false" signature="5637:5881" ph="//..." />
           </folding>
         </state>
       </provider>
@@ -1352,7 +1375,6 @@
           <caret line="9" column="53" selection-start-line="9" selection-start-column="53" selection-end-line="9" selection-end-column="53" />
           <folding>
             <element signature="docComment;class#DatabaseController#0" expanded="false" />
-            <element signature="method#searchArticle#0;class#DatabaseController#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1528,55 +1550,57 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/boundary/CatalogueBoundary.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="267" column="52" selection-start-line="267" selection-start-column="52" selection-end-line="267" selection-end-column="52" />
+        <state relative-caret-position="900">
+          <caret line="610" column="0" selection-start-line="610" selection-start-column="0" selection-end-line="610" selection-end-column="0" />
           <folding>
+            <element signature="imports" expanded="false" />
             <element signature="docComment;class#CatalogueBoundary#0" expanded="false" />
             <element signature="method#CatalogueBoundary#0;class#CatalogueBoundary#0" expanded="false" />
             <element signature="e#1827#1844#0" expanded="false" />
+            <element signature="e#6746#6747#0" expanded="false" />
+            <element signature="e#6777#6778#0" expanded="false" />
             <element signature="method#research#0;class#CatalogueBoundary#0" expanded="false" />
             <element signature="class#Actions#0;class#CatalogueBoundary#0" expanded="false" />
+            <element signature="e#9827#9828#0" expanded="false" />
+            <element signature="e#9871#9872#0" expanded="false" />
             <element signature="method#actionPerformed#0;class#Actions#0;class#CatalogueBoundary#0" expanded="false" />
-            <element signature="class#TimerActionListener#0;class#CatalogueBoundary#0" expanded="false" />
-            <marker date="1481910608469" expanded="false" signature="5637:5881" ph="//..." />
+            <marker date="1481996786491" expanded="false" signature="5637:5881" ph="//..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/databaseINIT/DBinit.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-252">
-          <caret line="73" column="33" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="33" />
+        <state relative-caret-position="1188">
+          <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/DatabaseController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="18" column="82" selection-start-line="18" selection-start-column="82" selection-end-line="18" selection-end-column="82" />
-          <folding>
-            <element signature="docComment;class#DatabaseController#0" expanded="false" />
-            <element signature="method#searchArticle#0;class#DatabaseController#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/control/CatalogueController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state relative-caret-position="252">
+          <caret line="127" column="0" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#CatalogueController#0" expanded="false" />
             <element signature="method#CatalogueController#0;class#CatalogueController#0" expanded="false" />
             <element signature="method#createCatalogue#0;class#CatalogueController#0" expanded="false" />
-            <element signature="method#getCatalogue#0;class#CatalogueController#0" expanded="false" />
             <element signature="method#getArticleByPrice#0;class#CatalogueController#0" expanded="false" />
             <element signature="method#checkString#0;class#CatalogueController#0" expanded="false" />
             <element signature="method#sqlCreator#0;class#CatalogueController#0" expanded="false" />
             <element signature="method#sqlCheck#0;class#CatalogueController#0" expanded="false" />
             <element signature="method#levenshtein#0;class#CatalogueController#0" expanded="false" />
             <element signature="method#levenshteinCheck#0;class#CatalogueController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/DatabaseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1422">
+          <caret line="87" column="5" selection-start-line="87" selection-start-column="5" selection-end-line="87" selection-end-column="5" />
+          <folding>
+            <element signature="docComment;class#DatabaseController#0" expanded="false" />
           </folding>
         </state>
       </provider>

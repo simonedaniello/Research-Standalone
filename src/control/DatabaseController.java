@@ -77,6 +77,7 @@ abstract class DatabaseController {
                         nuovoArticolo.setProprietario(rs.getString("PROPRIETARIO"));
                         nuovoArticolo.setPrezzo(rs.getFloat("PREZZO"));
                         nuovoArticolo.setQuantità(rs.getInt("QUANTITA"));
+                        break;
                     default:
                         return null;
                 }
@@ -85,5 +86,4 @@ abstract class DatabaseController {
         }
         return array;
     }
-
 }
