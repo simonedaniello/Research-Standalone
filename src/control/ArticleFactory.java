@@ -26,19 +26,36 @@ class ArticleFactory {
         return instance;
     }
 
-    Article getArticle(){
+    Article getArticolo(String kind){
+        switch (kind) {
+            case "article":
+                return getArticle();
+            case "book":
+                return getBook();
+            case "clothing":
+                return getClothing();
+            case "electronics":
+                return getElectronics();
+            case "textBook" :
+                return getTextBook();
+            default:
+                return null;
+        }
+    }
+
+    private Article getArticle(){
         return new Article();
     }
-    Book getBook(){
+    private Book getBook(){
         return new Book();
     }
-    Clothing getClothing(){
+    private Clothing getClothing(){
         return new Clothing();
     }
-    Electronics getElectronics(){
+    private Electronics getElectronics(){
         return new Electronics();
     }
-    TextBook getTextBook(){
+    private TextBook getTextBook(){
         return new TextBook();
     }
 

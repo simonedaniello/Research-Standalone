@@ -271,7 +271,7 @@ public class CatalogueBoundary{
         private JButton cancelButton = new JButton("Indietro");
 
         private Actions(int azione){
-            this.azione = azione;x\
+            this.azione = azione;
         }
 
         public void actionPerformed(ActionEvent event){

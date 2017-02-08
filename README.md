@@ -1,6 +1,6 @@
 # researchISPW
 
-ResearchISPW was developed for the exam "Software Engineering and Web Application".
+ResearchISPW was developed for the exam of "Software Engineering and Web Applications".
 
 This standalone represents a part of an e-commerce web application, showing how research works.
 

@@ -10,15 +10,4 @@ package control;
 
 class UserDatabase extends DatabaseController {
 
-    //Singleton
-    private static UserDatabase instance = new UserDatabase();
-
-    private UserDatabase() {
-    }
-
-    static UserDatabase getInstance(){
-        return instance;
-    }
-
-
 }

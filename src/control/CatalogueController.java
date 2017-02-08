@@ -42,7 +42,7 @@ public class CatalogueController {
         Article rq = null;
         switch (tipoArticolo) {
             case "Book":
-                rq = ArticleFactory.getInstance().getBook();
+                rq = ArticleFactory.getInstance().getArticolo("book");
 
                 rq.setNome(checkString(nome));
                 rq.setProprietario(checkString(proprietario));
@@ -52,7 +52,7 @@ public class CatalogueController {
 
                 break;
             case "Electronics":
-                rq = ArticleFactory.getInstance().getElectronics();
+                rq = ArticleFactory.getInstance().getArticolo("electronics");
 
                 rq.setNome(checkString(nome));
                 rq.setProprietario(checkString(proprietario));
@@ -62,7 +62,7 @@ public class CatalogueController {
 
                 break;
             case "Clothing":
-                rq = ArticleFactory.getInstance().getClothing();
+                rq = ArticleFactory.getInstance().getArticolo("clothing");
 
                 rq.setNome(checkString(nome));
                 rq.setProprietario(checkString(proprietario));
@@ -75,7 +75,7 @@ public class CatalogueController {
 
                 break;
             case "TextBook":
-                rq = ArticleFactory.getInstance().getTextBook();
+                rq = ArticleFactory.getInstance().getArticolo("textBook");
 
                 rq.setNome(checkString(nome));
                 rq.setProprietario(checkString(proprietario));
@@ -90,7 +90,7 @@ public class CatalogueController {
                 break;
 
             case "":
-                rq = ArticleFactory.getInstance().getArticle();
+                rq = ArticleFactory.getInstance().getArticolo("article");
                 rq.setNome(checkString(nome));
                 break;
         }
@@ -123,17 +123,18 @@ public class CatalogueController {
             articoli = new ArrayList<>();
             return articoli;
         }
+        DatabaseController dbc = DatabaseFactory.getInstance().getDatabase("user");
         System.out.println(sql);
         if (rq.getClass().equals(Book.class)) {
-            articoli = UserDatabase.getInstance().searchArticle(sql, "Book");
+            articoli = dbc.searchArticle(sql, "Book");
         } else if (rq.getClass().equals(Electronics.class)) {
-            articoli = UserDatabase.getInstance().searchArticle(sql, "Electronics");
+            articoli = dbc.searchArticle(sql, "Electronics");
         } else if (rq.getClass().equals(Clothing.class)) {
-            articoli = UserDatabase.getInstance().searchArticle(sql, "Clothing");
+            articoli = dbc.searchArticle(sql, "Clothing");
         } else if (rq.getClass().equals(TextBook.class)) {
-            articoli = UserDatabase.getInstance().searchArticle(sql, "TextBook");
+            articoli = dbc.searchArticle(sql, "TextBook");
         } else {
-            articoli = UserDatabase.getInstance().searchArticle(sql, "generic");
+            articoli = dbc.searchArticle(sql, "generic");
         }
 
         if (articoli.size() != 0){
@@ -356,7 +357,7 @@ public class CatalogueController {
     private ArrayList<Article> levenshteinCheck(String nome) throws SQLException {
         ArrayList<Article> articoliVicini = new ArrayList<>();
         String sql = "SELECT * FROM ARTICLES.articolo";
-        articoli = UserDatabase.getInstance().searchArticle(sql, "generic");
+        articoli = DatabaseFactory.getInstance().getDatabase("user").searchArticle(sql, "generic");
         if(articoli.size() != 0){
             for (Article a : articoli) {
                 if (levenshtein(a.getNome(), nome) < 4) {
