@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="457423e3-0dfd-4909-992e-738942799c5d" name="Default" comment="version 1.0">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ResearchSTDALN/control/ArticleFactory.class" afterPath="$PROJECT_DIR$/out/production/ResearchSTDALN/control/ArticleFactory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ResearchSTDALN/control/CatalogueController.class" afterPath="$PROJECT_DIR$/out/production/ResearchSTDALN/control/CatalogueController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ResearchSTDALN/control/DatabaseController.class" afterPath="$PROJECT_DIR$/out/production/ResearchSTDALN/control/DatabaseController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ResearchSTDALN/control/UserDatabase.class" afterPath="$PROJECT_DIR$/out/production/ResearchSTDALN/control/UserDatabase.class" />
+    <list default="true" id="457423e3-0dfd-4909-992e-738942799c5d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/DatabaseController.java" afterPath="$PROJECT_DIR$/src/control/DatabaseController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/databaseINIT/Provider.java" afterPath="$PROJECT_DIR$/src/databaseINIT/Provider.java" />
     </list>
     <ignored path="ResearchSTDALN.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -157,7 +151,7 @@
       <file leaf-file-name="DatabaseController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/control/DatabaseController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
+            <state relative-caret-position="468">
               <caret line="34" column="9" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="false" />
@@ -167,12 +161,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="378">
-                <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <first_editor relative-caret-position="162">
+                <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -189,7 +183,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Provider.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Provider.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/databaseINIT/Provider.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="324">
@@ -245,8 +239,8 @@
         <option value="$PROJECT_DIR$/src/control/ArticleFactory.java" />
         <option value="$PROJECT_DIR$/src/control/CatalogueController.java" />
         <option value="$PROJECT_DIR$/src/control/DatabaseController.java" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/databaseINIT/Provider.java" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -287,8 +281,8 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1060,7 +1054,8 @@
       <workItem from="1486546671741" duration="690000" />
       <workItem from="1486552740905" duration="1214000" />
       <workItem from="1486977784933" duration="7721000" />
-      <workItem from="1487318059329" duration="69000" />
+      <workItem from="1487318059329" duration="100000" />
+      <workItem from="1487318563011" duration="9000" />
     </task>
     <task id="LOCAL-00001" summary="Listeners adjustement">
       <created>1480873309362</created>
@@ -1223,11 +1218,18 @@
       <option name="project" value="LOCAL" />
       <updated>1486544510403</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="version 1.0">
+      <created>1487318138227</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1487318138227</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="163560000" />
+    <option name="totallyTimeSpent" value="163600000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1366" height="744" extended-state="6" />
@@ -1240,8 +1242,8 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32884902" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25851393" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1325,7 +1327,8 @@
     <MESSAGE value="fix2" />
     <MESSAGE value="readme and create Junit envoronment" />
     <MESSAGE value="updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="updates" />
+    <MESSAGE value="version 1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 1.0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1769,7 +1772,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/control/DatabaseController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
+        <state relative-caret-position="468">
           <caret line="34" column="9" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="false" />
@@ -1778,16 +1781,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+    <entry file="file://$PROJECT_DIR$/src/databaseINIT/Provider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="378">
-            <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <first_editor relative-caret-position="162">
+            <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
             <folding />
           </first_editor>
           <second_editor />
@@ -1802,12 +1808,9 @@
           <second_editor />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/databaseINIT/Provider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
-          <folding />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
         </state>
       </provider>
     </entry>

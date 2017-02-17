@@ -7,6 +7,7 @@ This standalone represents a part of an e-commerce web application, showing how 
 Another standalone of this project can be found at 
 
 https://github.com/simonedaniello/researchISPW
+
 https://github.com/simonedaniello/CheckReviewSTDALN.git
 
 
