@@ -39,7 +39,7 @@ abstract class DatabaseController {
             {
                 switch (kind) {
                     case "Book":
-                        nuovoArticolo = ArticleFactory.getInstance().getBook();
+                        nuovoArticolo = ArticleFactory.getInstance().getArticolo("book");
                         nuovoArticolo.setNome(rs.getString("NOME"));
                         nuovoArticolo.setProprietario(rs.getString("PROPRIETARIO"));
                         nuovoArticolo.setPrezzo(rs.getFloat("PREZZO"));
@@ -50,7 +50,7 @@ abstract class DatabaseController {
                         ((Book)nuovoArticolo).setPagine(rs.getInt("PAGINE"));
                         break;
                     case "Electronics":
-                        nuovoArticolo = ArticleFactory.getInstance().getElectronics();
+                        nuovoArticolo = ArticleFactory.getInstance().getArticolo("electronics");
                         nuovoArticolo.setNome(rs.getString("NOME"));
                         nuovoArticolo.setProprietario(rs.getString("PROPRIETARIO"));
                         nuovoArticolo.setPrezzo(rs.getFloat("PREZZO"));
@@ -59,7 +59,7 @@ abstract class DatabaseController {
                         ((Electronics) nuovoArticolo).setMarca(rs.getString("MARCA"));
                         break;
                     case "Clothing":
-                        nuovoArticolo = ArticleFactory.getInstance().getClothing();
+                        nuovoArticolo = ArticleFactory.getInstance().getArticolo("clothing");
                         nuovoArticolo.setNome(rs.getString("NOME"));
                         nuovoArticolo.setProprietario(rs.getString("PROPRIETARIO"));
                         nuovoArticolo.setPrezzo(rs.getFloat("PREZZO"));
@@ -69,7 +69,7 @@ abstract class DatabaseController {
                         ((Clothing) nuovoArticolo).setMarca(rs.getString("MARCA"));
                         break;
                     case "TextBook":
-                        nuovoArticolo = ArticleFactory.getInstance().getTextBook();
+                        nuovoArticolo = ArticleFactory.getInstance().getArticolo("textBook");
                         nuovoArticolo.setNome(rs.getString("NOME"));
                         nuovoArticolo.setProprietario(rs.getString("PROPRIETARIO"));
                         nuovoArticolo.setPrezzo(rs.getFloat("PREZZO"));
@@ -78,7 +78,7 @@ abstract class DatabaseController {
                         ((TextBook) nuovoArticolo).setMateria(rs.getString("MATERIA"));
                         break;
                     case "generic":
-                        nuovoArticolo = ArticleFactory.getInstance().getArticle();
+                        nuovoArticolo = ArticleFactory.getInstance().getArticolo("article");
                         nuovoArticolo.setNome(rs.getString("NOME"));
                         nuovoArticolo.setProprietario(rs.getString("PROPRIETARIO"));
                         nuovoArticolo.setPrezzo(rs.getFloat("PREZZO"));
